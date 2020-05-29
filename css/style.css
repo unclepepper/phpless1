@@ -62,13 +62,11 @@ button {
 }
 
 .window-search input {
-    width: 280px;
+    width: 260px;
     color: #000;
     border: none;
-    padding-left: 20px;
+    padding: 0 20px;
 }
-
-.window-search button {}
 
 .button {
     background-color: #56C596;
@@ -77,9 +75,18 @@ button {
     width: 100px;
 }
 
-.content-top {
+.wrap {
     display: flex;
     justify-content: space-between;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+}
+
+.content-top {
     margin-bottom: 50px;
 }
 
@@ -90,10 +97,10 @@ button {
 }
 
 .content-top-left {
-    width: 55%;
+    width: 100%;
     box-shadow: 1px 15px 35px #E5E5E5;
     padding: 20px;
-    margin-top: 30px;
+    margin: 30px 0;
     border: 1px solid #E5E5E5;
     border-radius: 5px;
     text-align: justify;
@@ -109,8 +116,12 @@ button {
     margin-right: 20px;
 }
 
+.site-bar {
+    margin-left: 20px;
+    width: 22%;
+}
+
 .content-top-right {
-    width: 27%;
     box-shadow: 1px 15px 35px #E5E5E5;
     padding: 20px;
     margin-top: 30px;
@@ -135,22 +146,27 @@ button {
     margin-top: 0;
 }
 
-.content-top-right-alig {
-    margin-left: 20px;
-}
+.content-top-right-alig {}
 
 .content-bottom {
+    width: 100%;
+    box-shadow: 1px 15px 35px #E5E5E5;
+    margin-top: 30px;
+    border: 1px solid #E5E5E5;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: justify;
     margin-bottom: 50px;
 }
 
 .image {
-    width: 51%;
+    width: 100%;
     height: 300px;
+    padding: 20px;
     background-image: url('../image/Картинка.png');
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 1px 15px 35px #E5E5E5;
-    padding: 20px;
     border: 1px solid #E5E5E5;
     border-radius: 5px;
 }
@@ -267,7 +283,7 @@ button {
 .button-registration {
     width: 100%;
     margin-bottom: 50px;
-      margin-top: 20px;
+    margin-top: 20px;
 }
 
 .test {
