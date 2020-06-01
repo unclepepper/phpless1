@@ -227,6 +227,10 @@ button {
     margin-bottom: 20px;
 }
 
+.content-foot .button {
+    width: 10%;
+}
+
 
 /* authorisation */
 
@@ -444,13 +448,16 @@ button {
 
 @media (max-width: 506px) {
     .device-menu {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         background-image: url("../image/device_menu_white.png");
         background-size: cover;
         background-position: center;
         display: block;
         border-radius: 2px;
+    }
+    .hidden-menu {
+        display: none;
     }
     .device-menu:hover {
         box-shadow: 0 0 5px #000;
@@ -458,8 +465,47 @@ button {
     }
     .device-menu:active {
         box-shadow: 0 0 3px #fff;
-        width: 39px;
-        height: 39px;
+        width: 29px;
+        height: 29px;
+    }
+    .device-menu:hover .hidden-menu-wrap {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 75%;
+        /* padding: 0 10px; */
+    }
+    .device-menu:hover .hidden-menu {
+        width: 95%;
+        margin: auto;
+        display: block;
+        height: 55%;
+        background-color: rgba(64, 64, 64, 0.9);
+        padding-top: 10px;
+    }
+    .device-menu:hover .hidden-menu li {
+        list-style: none;
+        color: #fff;
+        line-height: 50px;
+        /* width: 90%; */
+    }
+    .device-menu:hover .hidden-menu a {
+        text-decoration: none;
+        color: #fff;
+    }
+    .hidden-menu li:hover {
+        padding: 0 20px;
+        margin-right: 50px;
+        box-shadow: 0 0 10px #fff;
+        font-size: 15px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    .hidden-menu li:active {
+        background-color: rgba(64, 64, 64, 0.5);
+        box-shadow: 0 0 5px #fff;
     }
     .nav {
         display: none;
