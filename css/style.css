@@ -6,11 +6,11 @@ body {
 }
 
 .param {
-    margin-left: 100px;
+    margin-left: 8%;
 }
 
 .param-left {
-    margin-right: 100px;
+    margin-right: 8%;
 }
 
 .top {
@@ -35,6 +35,10 @@ body {
 
 .nav a:not(:last-of-type) {
     margin-right: 20px;
+}
+
+.device-menu {
+    display: none;
 }
 
 .search {
@@ -62,17 +66,22 @@ button {
 }
 
 .window-search input {
-    width: 260px;
+    width: 63%;
+    /* width: 268px; */
     color: #000;
     border: none;
     padding: 0 20px;
+}
+
+.window-search button {
+    width: 22%;
 }
 
 .button {
     background-color: #56C596;
     color: #fff;
     border: none;
-    width: 100px;
+    /* width: 100px; */
 }
 
 .wrap {
@@ -232,7 +241,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     align-self: flex-start;
-    margin-right: 50px;
+    margin-right: 7%;
 }
 
 .authorization input {
@@ -244,7 +253,7 @@ button {
     border: 1px solid #E5E5E5;
     border-radius: 5px;
     height: 34px;
-    padding: 0 20px;
+    padding: 0 6%;
     box-shadow: 0 1px 2px #E5E5E5;
 }
 
@@ -262,7 +271,7 @@ button {
 }
 
 .registration:not(:last-of-type) {
-    margin-right: 20px;
+    margin-right: 5%;
 }
 
 .registration:not(:first-of-type) {
@@ -306,12 +315,12 @@ button {
 }
 
 .wrap-news h3 {
-    margin-left: 50px;
+    margin-left: 5%;
     margin-bottom: 20px;
 }
 
 .param-news {
-    margin: 0 100px;
+    margin: 0 8%;
 }
 
 .input-news-all {
@@ -356,14 +365,13 @@ button {
     font-family: 'Montserrat', sans-serif;
 }
 
-.input-news-bottom {}
-
 
 /* new_user */
 
 .wrap-news-user {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .input-news-user {
@@ -380,4 +388,111 @@ button {
 .input-news-user button {
     width: 100%;
     margin-bottom: 10px;
+}
+
+@media (max-width: 1198px) {
+    .image {
+        height: 250px;
+    }
+}
+
+@media (max-width: 1084px) {
+    .image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 1084px) {
+    .image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .main {
+        width: 90%;
+    }
+    .param {
+        margin-left: 5%;
+    }
+    .param-left {
+        margin-right: 5%;
+    }
+    .window-search input {
+        width: 50%;
+    }
+    .image {
+        height: 200px;
+    }
+    .site-bar {
+        width: 90%;
+        margin-bottom: 30px;
+        margin-top: 0;
+    }
+    .content-bottom {
+        margin-bottom: 10px;
+    }
+    .test {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 506px) {
+    .device-menu {
+        width: 40px;
+        height: 40px;
+        background-image: url("../image/device_menu_white.png");
+        background-size: cover;
+        background-position: center;
+        display: block;
+        border-radius: 2px;
+    }
+    .device-menu:hover {
+        box-shadow: 0 0 5px #000;
+        cursor: pointer;
+    }
+    .device-menu:active {
+        box-shadow: 0 0 3px #fff;
+        width: 39px;
+        height: 39px;
+    }
+    .nav {
+        display: none;
+    }
+    .link-search a {
+        display: none;
+    }
+    .link-search-authorization {
+        display: none;
+    }
+    .image {
+        height: 90px;
+    }
+    .wrap-news-user {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .input-news-user {
+        width: 100%;
+    }
+    .blok-login {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .input-news {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .input-news-all {
+        width: 100%;
+    }
+    .wrap-news {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
