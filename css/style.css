@@ -412,7 +412,7 @@ button {
     }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .wrap {
         display: flex;
         flex-wrap: wrap;
@@ -446,7 +446,7 @@ button {
     }
 }
 
-@media (max-width: 506px) {
+@media screen and (max-width: 506px) {
     .device-menu {
         width: 30px;
         height: 30px;
@@ -468,44 +468,66 @@ button {
         width: 29px;
         height: 29px;
     }
-    .device-menu:hover .hidden-menu-wrap {
-        display: block;
-        position: fixed;
+    .hidden-menu-wrap {
+        display: none;
+        position: absolute;
         top: 0;
-        left: 0;
-        width: 100%;
+        left: 1%;
+        width: 97%;
         height: 75%;
+        margin: 0 auto;
         /* padding: 0 10px; */
     }
-    .device-menu:hover .hidden-menu {
-        width: 95%;
-        margin: auto;
+    .block {
         display: block;
+    }
+    .hidden-menu {
+        width: 100%;
+        border: 3px solid #3C4CAD;
+        border-radius: 5px;
         height: 55%;
-        background-color: rgba(64, 64, 64, 0.9);
+        background-color: #5E72EB;
         padding-top: 10px;
     }
-    .device-menu:hover .hidden-menu li {
+    .hidden-menu li {
+        /* padding: 0 30px; */
         list-style: none;
         color: #fff;
         line-height: 50px;
-        /* width: 90%; */
+        width: 80%;
+        text-align: center;
     }
-    .device-menu:hover .hidden-menu a {
+    .hidden-menu a:hover {
+        font-size: 16px;
+    }
+    .hidden-menu ul {
+        margin: auto;
+        width: 90%;
+    }
+    .hidden-menu a {
         text-decoration: none;
         color: #fff;
     }
-    .hidden-menu li:hover {
-        padding: 0 20px;
-        margin-right: 50px;
-        box-shadow: 0 0 10px #fff;
-        font-size: 15px;
-        border-radius: 5px;
-        text-align: center;
+    .hidden-menu a:active {
+        font-size: 14px;
     }
-    .hidden-menu li:active {
-        background-color: rgba(64, 64, 64, 0.5);
+    .close {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .close img {
+        width: 30px;
+        float: right;
+        margin-right: 20px;
+    }
+    .close img:hover {
+        box-shadow: 0 0 10px #fff;
+        border-radius: 50px;
+    }
+    .close img:active {
         box-shadow: 0 0 5px #fff;
+        border-radius: 50px;
+        border: 0.5px solid #fff;
     }
     .nav {
         display: none;
@@ -540,5 +562,11 @@ button {
     .wrap-news {
         display: flex;
         flex-wrap: wrap;
+    }
+    .input-news {
+        width: 100%;
+    }
+    .param-news {
+        width: 100%;
     }
 }
