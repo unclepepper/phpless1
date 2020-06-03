@@ -472,8 +472,8 @@ button {
         display: none;
         position: absolute;
         top: 0;
-        left: 1%;
-        width: 97%;
+        left: 0;
+        width: 100%;
         height: 75%;
         margin: 0 auto;
         /* padding: 0 10px; */
@@ -483,8 +483,7 @@ button {
     }
     .hidden-menu {
         width: 100%;
-        border: 3px solid #3C4CAD;
-        border-radius: 5px;
+        border-radius: 1px;
         height: 55%;
         background-color: #5E72EB;
         padding-top: 10px;
