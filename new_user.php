@@ -13,25 +13,25 @@
 
 <body>
     <div class="top ">
-        <div class="logo param"><a href="index.html"> Блог Пользователя</a></div>
+        <div class="logo param"><a href="index.php"> Блог Пользователя</a></div>
         <div class="device-menu param-left">
             <div class="hidden-menu-wrap">
                 <div class="hidden-menu">
                     <div class="close"><img src="image/close.png" alt="close">
                     </div>
                     <ul>
-                        <li><a href="new_user.html">Пользователи</a></li>
-                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="new_user.php">Пользователи</a></li>
+                        <li><a href="news.php">Новости</a></li>
                         <li><a href="#">Настройка сайта</a></li>
-                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="index.php">Главная</a></li>
                     </ul>
                 </div>
             </div>
             <!-- hidden-menu-wrap end... -->
         </div>
         <div class="nav param-left">
-            <a href="new_user.html">Пользователи</a>
-            <a href="news.html">Новости</a>
+            <a href="new_user.php">Пользователи</a>
+            <a href="news.php">Новости</a>
             <a href="#">Настройка сайта</a>
             <!-- <a href="#">Обо мне</a> -->
         </div>

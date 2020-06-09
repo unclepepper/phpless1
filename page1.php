@@ -20,20 +20,20 @@
                     <div class="close"><img src="image/close.png" alt="close">
                     </div>
                     <ul>
-                        <li><a href="page1.html">Статьи</a></li>
-                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="page1.php">Статьи</a></li>
+                        <li><a href="news.php">Новости</a></li>
                         <li><a href="">Обо мне</a></li>
-                        <li><a href="authorization.html">Авторизация</a></li>
-                        <li><a href="authorization.html">Регистрация</a></li>
+                        <li><a href="authorization.php">Авторизация</a></li>
+                        <li><a href="authorization.php">Регистрация</a></li>
                     </ul>
                 </div>
             </div>
             <!-- hidden-menu-wrap end... -->
         </div>
         <div class="nav param-left">
-            <a href="index.html">Главная</a>
+            <a href="index.php">Главная</a>
             <a href="#">Статьи</a>
-            <a href="news.html">Новости</a>
+            <a href="news.php">Новости</a>
             <a href="#">Обо мне</a>
         </div>
     </div>
@@ -43,8 +43,8 @@
             <button type="submit" class="button">Искать</button>
         </div>
         <div class="link-search param-left">
-            <a href="authorization.html">Авторизация</a>
-            <a href="authorization.html">Регистрация</a>
+            <a href="authorization.php">Авторизация</a>
+            <a href="authorization.php">Регистрация</a>
         </div>
     </div>
     <div class="wrap">
@@ -134,19 +134,19 @@
                 <h3 class="content-top-right-alig">Разделы</h3>
                 <span class="content-top-right-alig">Статьи</span>
                 <ul>
-                    <li><a href="page1.html">Статья 1</a></li>
-                    <li><a href="page1.html">Статья 2</a></li>
-                    <li><a href="page1.html">Статья 3</a></li>
-                    <li><a href="page1.html">Статья 4</a></li>
-                    <li><a href="page1.html">Статья 5</a></li>
-                    <li><a href="page1.html">Статья 5.1</a></li>
+                    <li><a href="page1.php">Статья 1</a></li>
+                    <li><a href="page1.php">Статья 2</a></li>
+                    <li><a href="page1.php">Статья 3</a></li>
+                    <li><a href="page1.php">Статья 4</a></li>
+                    <li><a href="page1.php">Статья 5</a></li>
+                    <li><a href="page1.php">Статья 5.1</a></li>
                 </ul>
                 <span class="content-top-right-alig">Новости</span>
                 <ul>
-                    <li><a href="news.html">Новость 1</a></li>
-                    <li><a href="news.html">Новость 2</a></li>
-                    <li><a href="news.html">Новость 3</a></li>
-                    <li><a href="news.html">Новость 3.1</a></li>
+                    <li><a href="news.php">Новость 1</a></li>
+                    <li><a href="news.php">Новость 2</a></li>
+                    <li><a href="news.php">Новость 3</a></li>
+                    <li><a href="news.php">Новость 3.1</a></li>
 
                 </ul>
             </div>
