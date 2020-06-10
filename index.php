@@ -20,11 +20,11 @@
                     <div class="close"><img src="image/close.png" alt="close">
                     </div>
                     <ul>
-                        <li><a href="page1.html">Статьи</a></li>
-                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="page1.php">Статьи</a></li>
+                        <li><a href="news.php">Новости</a></li>
                         <li><a href="">Обо мне</a></li>
-                        <li><a href="authorization.html">Авторизация</a></li>
-                        <li><a href="authorization.html">Регистрация</a></li>
+                        <li><a href="authorization.php">Авторизация</a></li>
+                        <li><a href="authorization.php">Регистрация</a></li>
                     </ul>
                 </div>
             </div>

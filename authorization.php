@@ -1,6 +1,6 @@
 <?php
     if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
-        header('Location: http://localhost/index.php');  //Если авторизован, то перенаправляем на главную страницу
+        header('Location: http://php-lesson.loc/index.php');  //Если авторизован, то перенаправляем на главную страницу
     }
 
 	function formastr($str) {
@@ -10,7 +10,7 @@
 		return $str;
 	}
 	
-    $mysqli = new mysqli('localhost', 'root', '', 'blog'); //Создаем подключение к базе данных
+    $mysqli = new mysqli('localhost', 'nikolay', 'alice', 'blog'); //Создаем подключение к базе данных
     if ($mysqli->connect_errno) {
         echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
@@ -25,15 +25,17 @@
         $password = formastr($_GET['password']); //Получаем пароль пользователя
         
 		$result = $mysqli->query("SELECT * FROM `users` WHERE `email` = '".$email."'"); //Выполняем запрос на получение информации о пользователе по почте
+
+        $row = $result->fetch_assoc(); //Извлекаем массив с данными пользователя
+   
 	
-		$row = $result->fetch_assoc(); //Извлекаем массив с данными пользователя
 		
 		if ($row['password'] == $password) { //Проверяем сходится ли пароль из базы данных с паролем который ввел пользователь
 			SetCookie("auth", "true"); //Устанавливаем куки что пользователь авторизован
 			SetCookie("userid", $row['id']);
 			SetCookie("useremail", $row['email']);
 			SetCookie("username", $row['name']);
-			header('Location: http://web.io/index.php');  //Перенаправляем на главную страницу
+			header('Location: http://php-lesson.loc/index.php');  //Перенаправляем на главную страницу
 		} else {
 			$error_auth = 'Не правильная почта или пароль!'; //Если пароли не сошлись тогда выводим ошибку
 		}
@@ -49,11 +51,11 @@
         $surname = $_GET['surname']; //Получаем фамилию
 
         if($password == $password_re) {
-            $insert = $mysqli->query("INSERT INTO `users` (`id`, `email`, `password`, `name`) VALUES (NULL, '".$email."', '".$password."', '".$name."')");
+            $insert = $mysqli->query("INSERT INTO `users` (`user_id`, `email`, `password`, `name`,`surname`) VALUES (NULL, '".$email."', '".$password."', '".$name."', '".$surname."')");
         } else {
             $error_reg = 'Пароли не сходятся';
         }
-    }
+    } 
 ?>
 
     <!DOCTYPE html>
@@ -112,7 +114,12 @@
                 <div class="authorization input-all">
                     <h4>Авторизация</h4><br>
                     <form method="GET">
-                        <input type="hidden"  name="auth">
+                    <?php
+                    if($error_auth != null) { //Проверяем есть ли у нас ошибка
+                        echo '<p>'.$error_auth.'</p>'; //Выводим ошибку
+                    }
+                ?>
+                        <input type="hidden"  name="type" value="auth">
                         <input type="text" placeholder="Логин" name="email">
                         <input type="password" placeholder="Пароль" name="password">
                         <input type="submit" class=" button button-authorization" value='Отправить'>
@@ -124,22 +131,28 @@
                         <div class="registration input-all">
 
                             <h4>Регистрация</h4><br>
-                            <input type="text" placeholder="Логин">
-                            <input type="text" placeholder="Почта">
-                            <input type="text" placeholder="Пароль">
-                            <input type="text" placeholder="Номер телефона">
+                        <form method="GET">    
+                        <?php
+                    if($error_reg != null) { //Проверяем есть ли у нас ошибка
+                        echo '<p>'.$error_reg.'</p>'; //Выводим ошибку
+                    }
+                     ?>
+                             <input type="hidden"  name="type" value="reg">
+                            <input type="text" placeholder="Логин" name="login">
+                            <input type="text" placeholder="Почта" name="email">
+                            <input type="text" placeholder="Пароль" name="password">
+                            <input type="text" placeholder="Номер телефона" name="tel">
                         </div>
 
                         <div class="registration param-left input-all">
-                            <input type="text" placeholder="Имя">
-                            <input type="text" placeholder="Фамилия">
-                            <input type="text" placeholder="Подтвердите пароль">
-                            <input type="text" placeholder="Второй номер (необязательно)">
+                            <input type="text" placeholder="Имя" name="name">
+                            <input type="text" placeholder="Фамилия" name="surname">
+                            <input type="text" placeholder="Подтвердите пароль" name="password_re">
+                            <input type="text" placeholder="Второй номер (необязательно)" name="tel2">
                         </div>
                     </div>
-
-                    <button type="submit" class=" button param-left button-registration">Отправить</button>
-
+                            <input type="submit" class=" button param-left button-registration" value="Отправить">
+                    </form>
                 </div>
                 <!-- registration-all end... -->
 

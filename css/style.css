@@ -248,6 +248,14 @@ button {
     margin-right: 7%;
 }
 
+.authorization form {
+    width: 100%;
+}
+
+.registration form {
+    width: 100%;
+}
+
 .authorization input {
     margin-bottom: 10px;
 }
@@ -275,7 +283,7 @@ button {
 }
 
 .registration:not(:last-of-type) {
-    margin-right: 5%;
+    margin-right: 10%;
 }
 
 .registration:not(:first-of-type) {
@@ -288,12 +296,14 @@ button {
 }
 
 .button-authorization {
-    width: 100%;
     margin-top: 20px;
+    width: 100%;
 }
 
 .button-registration {
     width: 100%;
+    height: 34px;
+    border-radius: 3px;
     margin-bottom: 50px;
     margin-top: 20px;
 }
