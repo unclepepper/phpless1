@@ -21,7 +21,7 @@
                     </div>
                     <ul>
                         <li><a href="new_user.php">Пользователи</a></li>
-                        <li><a href="news.php">Новости</a></li>
+                        <li><a href="news.php ">Новости</a></li>
                         <li><a href="#">Настройка сайта</a></li>
                         <li><a href="index.php">Главная</a></li>
                     </ul>
