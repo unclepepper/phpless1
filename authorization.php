@@ -115,7 +115,7 @@
 
             </div>
         </div>
-        <div class="wpap">
+        <div class="wpap ">
             <div class="blok-login param param-form-left">
 
                 <div class="authorization input-all ">
