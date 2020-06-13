@@ -1,8 +1,9 @@
 <?php
     if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
-        header('Location: http://php-lesson.loc/index.php');  //Если авторизован, то перенаправляем на главную страницу
+        //header('Location: http://php-lesson.loc/index.php');  //Если авторизован, то перенаправляем на главную страницу
     }
-
+    $exit = isset($_GET['exit']); 
+  
 	function formastr($str) {
 		$str = trim($str);
 		$str = stripslashes($str);
@@ -17,6 +18,9 @@
     
     $error_auth = ''; //Текст ошибки для авторизации
     $error_reg = ''; //Текст ошибки для регистрации
+    $success_auth = ''; 
+    $success_reg = ''; 
+
 
     $type = isset($_GET['type']); //Получаем тип запроса
                 
@@ -27,7 +31,7 @@
 		$result = $mysqli->query("SELECT * FROM `users` WHERE `email` = '".$email."'"); //Выполняем запрос на получение информации о пользователе по почте
 
         $row = $result->fetch_assoc(); //Извлекаем массив с данными пользователя
-   
+       
 	
 		
 		if ($row['password'] == $password) { //Проверяем сходится ли пароль из базы данных с паролем который ввел пользователь
@@ -35,7 +39,8 @@
 			SetCookie("userid", $row['id']);
 			SetCookie("useremail", $row['email']);
 			SetCookie("username", $row['name']);
-			header('Location: http://php-lesson.loc/index.php');  //Перенаправляем на главную страницу
+             //header('Location: http://php-lesson.loc/index.php');  //Перенаправляем на главную страницу
+             $success_auth = ' Пользователь ' .$email . ' авторизован!';
 		} else {
 			$error_auth = 'Не правильная почта или пароль!'; //Если пароли не сошлись тогда выводим ошибку
 		}
@@ -52,10 +57,12 @@
 
         if($password == $password_re) {
             $insert = $mysqli->query("INSERT INTO `users` (`user_id`, `email`, `password`, `name`,`surname`) VALUES (NULL, '".$email."', '".$password."', '".$name."', '".$surname."')");
+            $success_reg = 'Пользователь '. $email . ' зарегистрирован!' ;
         } else {
             $error_reg = 'Пароли не сходятся';
         }
     } 
+    
 ?>
 
     <!DOCTYPE html>
@@ -109,32 +116,41 @@
             </div>
         </div>
         <div class="wpap">
-            <div class="blok-login param">
+            <div class="blok-login param param-form-left">
 
-                <div class="authorization input-all">
+                <div class="authorization input-all ">
                     <h4>Авторизация</h4><br>
-                    <form method="GET">
+                    <form method="GET" class="param-form">
                     <?php
                     if($error_auth != null) { //Проверяем есть ли у нас ошибка
                         echo '<p>'.$error_auth.'</p>'; //Выводим ошибку
                     }
+                    if($success_auth != null) { //Проверяем есть ли у нас автотизация
+                        echo '<p>'.$success_auth.'</p>'; //Выводим сообщение
+                    }
+                   
                 ?>
                         <input type="hidden"  name="type" value="auth">
                         <input type="text" placeholder="Логин" name="email">
                         <input type="password" placeholder="Пароль" name="password">
-                        <input type="submit" class=" button button-authorization" value='Отправить'>
+                        <input type="submit" class=" button " value='Отправить'>
+                       
+
                     </form>
                 </div>
 
-                <div class="registration-all">
+                <div class="registration-all param-left">
                     <div class="test">
                         <div class="registration input-all">
 
                             <h4>Регистрация</h4><br>
-                        <form method="GET">    
+                        <form method="GET" class="">    
                         <?php
                     if($error_reg != null) { //Проверяем есть ли у нас ошибка
                         echo '<p>'.$error_reg.'</p>'; //Выводим ошибку
+                    }
+                    if($success_reg != null) { //
+                        echo '<p>'.$success_reg .'</p>'; //
                     }
                      ?>
                              <input type="hidden"  name="type" value="reg">
@@ -144,14 +160,14 @@
                             <input type="text" placeholder="Номер телефона" name="tel">
                         </div>
 
-                        <div class="registration param-left input-all">
+                        <div class="registration input-all">
                             <input type="text" placeholder="Имя" name="name">
                             <input type="text" placeholder="Фамилия" name="surname">
                             <input type="text" placeholder="Подтвердите пароль" name="password_re">
                             <input type="text" placeholder="Второй номер (необязательно)" name="tel2">
                         </div>
                     </div>
-                            <input type="submit" class=" button param-left button-registration" value="Отправить">
+                            <input type="submit" class=" button  button-registration" value="Отправить">
                     </form>
                 </div>
                 <!-- registration-all end... -->

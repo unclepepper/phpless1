@@ -1,3 +1,34 @@
+<?php
+$mysqli = new mysqli('localhost', 'root', '', 'blog'); // Создаем подключение к базе данных
+    if ($mysqli->connect_errno) {
+        echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    }
+    $message = '';
+  
+
+    $type = isset($_GET['type']); //Получаем тип запроса
+    if($type == 'news'){
+        $title = $_GET['title'];
+        $title_english = $_GET['title_english'];
+        $desc_small = $_GET['desc_small'];
+        $desc_large = $_GET['desc_large'];
+        $date = $_GET['date'];
+        $author = $_GET['author'];
+    }
+    if($type == 'news'){
+         if($title != NULL and $desc_large !=NULL and $author !=NULL){
+            $insert = $mysqli->query("INSERT INTO `news` (`news_id`, `title`, `desc_small`, `desc_large`,`created`,`user_created`) VALUES (NULL, '".$title."', '".$desc_small."', '".$desc_large."', '".$date."', '".$author."')");   
+            $message = 'Новость '.' "'. $title .'" '. ' успешно опубликована!' ;
+         }  else{
+            $message = ' Заполните все поля';
+          
+         }     
+    }
+   
+   
+    $mysqli->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,22 +70,28 @@
 
     <div class="wrap-news">
         <h3>Новая новость</h3>
+      <?php if($message != NULL){ echo '<h3>'.$message.'</h3>';} ?>
+        <form method="GET" class="form-news">
+        <input type="hidden"  name="type" value="news">
         <div class="input-news param-news">
-            <input type="text" placeholder="Название" class="input-news-all">
-            <input type="text" placeholder="Название на английском" class="input-news-all">
+            <input type="text" name="title" placeholder="Название" class="input-news-all">
+            <input type="text" name="title_english" placeholder="Название на английском" class="input-news-all">
         </div>
         <div class="textarea-news-little param-news">
-            <textarea name="textarea-news-little" id="" cols="30" rows="10" placeholder="Краткая новость" class=" input-news-all "></textarea>
+            <textarea name="desc_small" id="" cols="30" rows="10" placeholder="Краткая новость" class=" input-news-all "></textarea>
         </div>
         <div class="textarea-news-big param-news">
-            <textarea name="textarea-news-big" id="" cols="30" rows="10" placeholder="Полная новость" class="input-news-all"></textarea>
+            <textarea name="desc_large" id="" cols="30" rows="10" placeholder="Полная новость" class="input-news-all"></textarea>
         </div>
         <div class="input-news param-news input-news-bottom">
-            <input type="text" placeholder="Дата публикации" class="input-news-all">
-            <input type="text" placeholder="Автор" class="input-news-all">
+            <input type="text" name="date" placeholder="Дата публикации" class="input-news-all">
+            <input type="text" name="author" placeholder="Автор" class="input-news-all">
+           
         </div>
+        <input type="submit" value=" Создать новость" class="button param button-news">
+        </form>
+       
     </div>
-
     <!-- wrap end... -->
     <footer class="footer">
         <span class="param">2019 Все права защищены</span>
