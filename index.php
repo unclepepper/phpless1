@@ -1,3 +1,13 @@
+<?php
+     $mysqli = new mysqli('localhost', 'root', '', 'blog'); //Создаем подключение к базе данных
+     if ($mysqli->connect_errno) {
+         echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+     }
+     $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id DESC LIMIT 3"); 
+ 
+     $row = $result->fetch_assoc(); //Извлекаем массив с данными 
+     
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,37 +60,59 @@
     </div>
     <div class="wrap ">
         <div class="param  main">
-
+        <?php
+                    foreach($result as $res){ 
+                        
+                    ?>
             <div class="content-top-left">
+           
                 <div class="head">
-                    <h3>Статья 1</h3>
-                    <span>1 февраля 2018</span>
+                    
+                    <h3><?php echo $res['title']; ?></h3>
+                    <?php 
+                    setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
+                                //$time = strtotime($res['created']);
+                                $newstime = strftime("%d %B %y",$res['created']);
+                                $time = iconv('windows-1251', 'utf-8', $newstime);
+                                ?>
+                   <span><?php echo $time; ?></span>
+               
                 </div>
                 <p>
-                    Не следует, однако забывать, что новая модель организационной деятельности влечет за собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же сложившаяся струкрура организации
-                    в значительной степени обуславливает создание соответствующих условий активации Товарищи! укрепление и развитие структуры играет важную роль в формировании форм развития.
-                </p>
-                <p>
-                    С другой стороны постоянный количественный рост и сфера нашей активности позволяе оценить значение направлений прогрессивного развития. Товарищи! консультация с широким активом способствует подготовки и реализации системы обучения кадров, соответвтвует
-                    насущным потребностям. Равным образом.
+                    
+                <?php 
+                $type = isset($_GET['type']);
+                if($type == 'read'){
+                    echo $res['desc_large'];
+                }else{
+                    echo $res['desc_small']; 
+                }
+                ?>
                 </p>
                 <div class="content-foot">
                     <div class="content-foot-left">
                         <span>Просмотры: 300</span>
                         <span>Лайки: 100</span>
                     </div>
-                    <button class="button">Читать</button>
+                    <form method="GET">
+                    <input type="hidden"  name="type" value="read">
+                    <input type="submit" class="button inp-but"  value="Читать">
+                    </form>
+                   
                 </div>
-
+                  
             </div>
-            <!-- content top -->
             <div class="image"></div>
-            <div class="content-bottom">
-
+            <?php } ?>
+            <!-- content top -->
+           
+            <!-- <div class="content-bottom">
+                
                 <div class="head">
-                    <h3>Статья 1</h3>
+                    <h3>Новость 3</h3>
                     <span>1 февраля 2018</span>
                 </div>
+
                 <p>
                     Не следует, однако забывать, что новая модель организационной деятельности влечет за собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же сложившаяся струкрура организации
                     в значительной степени обуславливает создание соответствующих условий активации Товарищи! укрепление и развитие структуры играет важную роль в формировании форм развития.
@@ -96,7 +128,8 @@
                     </div>
                     <button class="button">Читать</button>
                 </div>
-            </div>
+                       
+            </div> -->
             <!--  -->
         </div>
         <!-- main end -->
