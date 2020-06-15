@@ -1,5 +1,6 @@
 <?php
      $mysqli = new mysqli('localhost', 'root', '', 'blog'); //Создаем подключение к базе данных
+     $mysqli->set_charset("utf8");
      if ($mysqli->connect_errno) {
          echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
      }
