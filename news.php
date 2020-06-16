@@ -6,14 +6,14 @@ $mysqli = new mysqli('localhost', 'root', '', 'blog'); // Создаем под�
     $message = '';
   
 
-    $type = isset($_GET['type']); //Получаем тип запроса
+    $type = isset($_POST['type']); //Получаем тип запроса
     if($type == 'news'){
-        $title = $_GET['title'];
-        $title_english = $_GET['title_english'];
-        $desc_small = $_GET['desc_small'];
-        $desc_large = $_GET['desc_large'];
-        $date = $_GET['date'];
-        $author = $_GET['author'];
+        $title = $_POST['title'];
+        $title_english = $_POST['title_english'];
+        $desc_small = $_POST['desc_small'];
+        $desc_large = $_POST['desc_large'];
+        $date = $_POST['date'];
+        $author = $_POST['author'];
     }
     if($type == 'news'){
          if($title != NULL and $desc_large !=NULL and $author !=NULL){
@@ -71,7 +71,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'blog'); // Создаем под�
     <div class="wrap-news">
         <h3>Новая новость</h3>
       <?php if($message != NULL){ echo '<h3>'.$message.'</h3>';} ?>
-        <form method="GET" class="form-news">
+        <form method="POST" class="form-news">
         <input type="hidden"  name="type" value="news">
         <div class="input-news param-news">
             <input type="text" name="title" placeholder="Название" class="input-news-all">
@@ -84,7 +84,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'blog'); // Создаем под�
             <textarea name="desc_large" id="" cols="30" rows="10" placeholder="Полная новость" class="input-news-all"></textarea>
         </div>
         <div class="input-news param-news input-news-bottom">
-            <input type="text" name="date" placeholder="Дата публикации" class="input-news-all">
+            <input type="datetime-local" name="date" placeholder="Дата публикации" class="input-news-all">
             <input type="text" name="author" placeholder="Автор" class="input-news-all">
            
         </div>

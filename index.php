@@ -4,9 +4,9 @@
      if ($mysqli->connect_errno) {
          echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
      }
-     $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id DESC LIMIT 3"); 
+    //  $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id DESC LIMIT 3"); 
  
-     $row = $result->fetch_assoc(); //Извлекаем массив с данными 
+    //  $row = $result->fetch_assoc(); //Извлекаем массив с данными 
      
 ?>
 <!DOCTYPE html>
@@ -61,12 +61,13 @@
     </div>
     <div class="wrap ">
         <div class="param  main">
-        <?php
+       
+            <div class="content-top-left">
+            <?php
+          $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id DESC LIMIT 2"); 
                     foreach($result as $res){ 
                         
                     ?>
-            <div class="content-top-left">
-           
                 <div class="head">
                     
                     <h3><?php echo $res['title']; ?></h3>
@@ -95,46 +96,58 @@
                         <span>Просмотры: 300</span>
                         <span>Лайки: 100</span>
                     </div>
-                    <form method="GET">
-                    <input type="hidden"  name="type" value="read">
-                    <input type="submit" class="button inp-but"  value="Читать">
-                    </form>
+                   
+
+                    <a href="/page1.php?id=<? echo $res['news_id'] ?>" class="button inp-but" >Читать </a>
+                   
                    
                 </div>
-                  
+                <?php } ?>
             </div>
-            <div class="image"></div>
-            <?php } ?>
-            <!-- content top -->
+            
            
-            <!-- <div class="content-bottom">
-                
+            <!-- content top -->
+            <div class="image"></div>
+            <div class="content-bottom">
+            <?php
+          $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id DESC LIMIT 1"); 
+                    foreach($result as $res){ 
+                        
+                    ?>
                 <div class="head">
-                    <h3>Новость 3</h3>
-                    <span>1 февраля 2018</span>
+                <h3><?php echo $res['title']; ?></h3>
+                    <?php 
+                    setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
+                                //$time = strtotime($res['created']);
+                                $newstime = strftime("%d %B %y",$res['created']);
+                                $time = iconv('windows-1251', 'utf-8', $newstime);
+                                ?>
+                   <span><?php echo $time; ?></span>
                 </div>
 
                 <p>
-                    Не следует, однако забывать, что новая модель организационной деятельности влечет за собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же сложившаяся струкрура организации
-                    в значительной степени обуславливает создание соответствующих условий активации Товарищи! укрепление и развитие структуры играет важную роль в формировании форм развития.
-                </p>
-                <p>
-                    С другой стороны постоянный количественный рост и сфера нашей активности позволяе оценить значение направлений прогрессивного развития. Товарищи! консультация с широким активом способствует подготовки и реализации системы обучения кадров, соответвтвует
-                    насущным потребностям. Равным образом.
+                <?php 
+                $type = isset($_GET['type']);
+                if($type == 'read'){
+                    echo $res['desc_large'];
+                }else{
+                    echo $res['desc_small']; 
+                }
+                ?>
                 </p>
                 <div class="content-foot">
                     <div class="content-foot-left">
                         <span>Просмотры: 300</span>
                         <span>Лайки: 100</span>
                     </div>
-                    <button class="button">Читать</button>
+                    <a href="/page1.php?id=<? echo $res['news_id'] ?>" class="button inp-but" >Читать </a>
                 </div>
                        
-            </div> -->
-            <!--  -->
+            </div> 
+            
         </div>
         <!-- main end -->
-
+        <?php } ?>
         <div class="site-bar param param-left">
             <div class="content-top-right">
                 <h3 class="content-top-right-alig">Разделы</h3>
