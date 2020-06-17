@@ -1,5 +1,25 @@
+<?php
+ 
+     $mysqli = new mysqli('localhost', 'root', '', 'blog'); //Создаем подключение к базе данных
+    //  $mysqli->set_charset("utf8");
+     if ($mysqli->connect_errno) {
+         echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+     }
+   
+     $news_id = $_GET['id'];
+     $news_id = (int)$news_id;
+    
+   
+    
+        $result = $mysqli->query("SELECT * FROM `news` WHERE `news_id` = '".$news_id."'"); 
+        $row = $result->fetch_assoc(); //Извлекаем массив с данными 
+        
+     
+
+                    
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -50,18 +70,29 @@
     <div class="wrap">
         <div class="main param">
             <div class="content-top-left">
+            
                 <div class="head">
-                    <h3>Статья 1</h3>
-                    <span>1 февраля 2019</span>
+                <?php 
+                    setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
+                    //$time = strtotime($res['created']);
+                    $newstime = strftime("%d %B %y",$row['created']);
+                    $time = iconv('windows-1251', 'utf-8', $newstime);
+                    ?>
+                
+                    <h3><?echo $row['title'];?></h3>
+                      
+              
+                    <span><?echo $time;?></span>
                 </div>
                 <p>
-                    Не следует, однако забывать, что новая модель организационной деятельности влечет за собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же сложившаяся струкрура организации
-                    в значительной степени обуславливает создание соответствующих условий активации Товарищи! укрепление и развитие структуры играет важную роль в формировании форм развития.
+                <?php 
+              
+                    echo $row['desc_large'];
+               
+                ?>
                 </p>
-                <p>
-                    С другой стороны постоянный количественный рост и сфера нашей активности позволяе оценить значение направлений прогрессивного развития. Товарищи! консультация с широким активом способствует подготовки и реализации системы обучения кадров, соответвтвует
-                    насущным потребностям. Равным образом.
-                </p>
+                
+
                 <div class="content-foot">
                     <div class="content-foot-left">
                         <span>Просмотры: 300</span>

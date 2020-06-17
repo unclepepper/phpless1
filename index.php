@@ -64,7 +64,7 @@
        
             <div class="content-top-left">
             <?php
-          $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id DESC LIMIT 2"); 
+          $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id "); 
                     foreach($result as $res){ 
                         
                     ?>
@@ -83,12 +83,9 @@
                 <p>
                     
                 <?php 
-                $type = isset($_GET['type']);
-                if($type == 'read'){
+                
                     echo $res['desc_large'];
-                }else{
-                    echo $res['desc_small']; 
-                }
+                
                 ?>
                 </p>
                 <div class="content-foot">
@@ -110,7 +107,7 @@
             <div class="image"></div>
             <div class="content-bottom">
             <?php
-          $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id DESC LIMIT 1"); 
+          $result = $mysqli->query("SELECT * FROM `news`  LIMIT 1"); 
                     foreach($result as $res){ 
                         
                     ?>

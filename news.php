@@ -30,7 +30,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'blog'); // Создаем под�
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
