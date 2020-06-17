@@ -64,7 +64,7 @@
        
             <div class="content-top-left">
             <?php
-          $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id "); 
+          $result = $mysqli->query("SELECT * FROM `news` ORDER BY `news_id` DESC LIMIT 1 "); 
                     foreach($result as $res){ 
                         
                     ?>
@@ -95,7 +95,7 @@
                     </div>
                    
 
-                    <a href="/page1.php?id=<? echo $res['news_id'] ?>" class="button inp-but" >Читать </a>
+                    <a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but" >Читать </a>
                    
                    
                 </div>
@@ -115,7 +115,7 @@
                 <h3><?php echo $res['title']; ?></h3>
                     <?php 
                     setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
-                                //$time = strtotime($res['created']);
+                                $time = strtotime($res['created']);
                                 $newstime = strftime("%d %B %y",$res['created']);
                                 $time = iconv('windows-1251', 'utf-8', $newstime);
                                 ?>
@@ -137,7 +137,7 @@
                         <span>Просмотры: 300</span>
                         <span>Лайки: 100</span>
                     </div>
-                    <a href="/page1.php?id=<? echo $res['news_id'] ?>" class="button inp-but" >Читать </a>
+                    <a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but" >Читать </a>
                 </div>
                        
             </div> 

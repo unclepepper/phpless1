@@ -79,10 +79,10 @@
                     $time = iconv('windows-1251', 'utf-8', $newstime);
                     ?>
                 
-                    <h3><?echo $row['title'];?></h3>
+                    <h3><?php echo $row['title'];?></h3>
                       
               
-                    <span><?echo $time;?></span>
+                    <span><?php echo $time;?></span>
                 </div>
                 <p>
                 <?php 
