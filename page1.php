@@ -150,9 +150,24 @@
                         </div>
                     </section> -->
                     <div class="textarea">
-                        <h4>Добавить комментарий</h4>
-                        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-                        <button class="button">Добавить</button>
+                      
+                        <?php 
+                        if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
+                            $userid = $_COOKIE['userid'];
+                        $useremail = $_COOKIE['useremail'];
+                        echo $userid . 'ok';
+                       
+                        echo '<p style="color:red;"> Вы вошли как <span  style="color:red;font-weight:bold;">' .  $useremail . '</span>!';
+                        ?>
+                          <h4>Добавить комментарий</h4>
+                        <form method="$_GET">
+                            <input type="hidden" name ="id" value="<?php echo  $news_id; ?>">
+                            <input type="hidden" name ="user" value="<?php echo $userid ; ?>">
+
+                            <textarea name="comment"  cols="30" rows="10"></textarea>
+                            <input type="submit" name="" class="button inp-but" value="Добавить" >
+                        </form>
+                    <?php }else{echo "no";}?>
                     </div>
                 </div>
             </div>

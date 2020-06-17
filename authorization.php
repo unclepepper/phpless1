@@ -2,7 +2,7 @@
     if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
         //header('Location: http://php-lesson.loc/index.php');  //Если авторизован, то перенаправляем на главную страницу
     }
-    $exit = isset($_GET['exit']); 
+    // $exit = isset($_GET['exit']); 
   
 	function formastr($str) {
 		$str = trim($str);
@@ -36,7 +36,7 @@
 		
 		if ($row['password'] == $password) { //Проверяем сходится ли пароль из базы данных с паролем который ввел пользователь
 			SetCookie("auth", "true"); //Устанавливаем куки что пользователь авторизован
-			SetCookie("userid", $row['id']);
+			SetCookie("userid", $row['user_id']);
 			SetCookie("useremail", $row['email']);
 			SetCookie("username", $row['name']);
              //header('Location: http://php-lesson.loc/index.php');  //Перенаправляем на главную страницу
