@@ -113,7 +113,7 @@
                             </div>
                         </div>
                     </section>
-                    <section class="blok1">
+                    <!-- <section class="blok1">
                         <div class="head-comment">
                             <div>
                                 <div class="avatar"></div>
@@ -148,7 +148,7 @@
                                     же сложившаяся струкрура организации в значительной степени обуславливает создание соответствующих условий активации Товарищи! укрепление и развитие структуры играет важную роль в формировании форм развития.</p>
                             </div>
                         </div>
-                    </section>
+                    </section> -->
                     <div class="textarea">
                         <h4>Добавить комментарий</h4>
                         <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
