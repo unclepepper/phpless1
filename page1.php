@@ -5,15 +5,38 @@
      if ($mysqli->connect_errno) {
          echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
      }
-   
+     $comment = $_GET['comment'];
      $news_id = $_GET['id'];
      $news_id = (int)$news_id;
+     $result = $mysqli->query("SELECT * FROM `news` WHERE `news_id` = '".$news_id."'"); 
+     $row = $result->fetch_assoc(); //Извлекаем массив с данными 
+     
+
+     $success_com = '';
+     if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
+         $userid = $_COOKIE['userid'];
+        $useremail = $_COOKIE['useremail'];
+        $username = $_COOKIE['username'];
+        $usersurname = $_COOKIE['usersurname'];
+            if($comment != NULL ){
+                $insert = $mysqli->query("INSERT INTO `comments` (`comment_id`, `news_id`, `user_created`, `comment`,`created`) VALUES (NULL, '".$news_id."', '".$userid."', '".$comment."', '".$created."')");
+                $resul = $mysqli->query("SELECT * FROM `comments` WHERE `comment` = '".$comment."'");
+               
+                    $success_com = 'Комментарий успешно добавлен!';
+               
+            }else if(isset($comment)){
+                $success_com = 'Напишите свой комментарий!';
+            }
+      
+      
+     }
+    
+   
+     
     
    
     
-        $result = $mysqli->query("SELECT * FROM `news` WHERE `news_id` = '".$news_id."'"); 
-        $row = $result->fetch_assoc(); //Извлекаем массив с данными 
-        
+       
      
 
                     
@@ -101,18 +124,24 @@
                 </div>
                 <div class="comment">
                     <h3>Комментарии</h3>
+                    <?php  $com = $mysqli->query("SELECT  * FROM `comments` WHERE `news_id` = '".$news_id."'"); 
+                           foreach($com as $res){ 
+                        
+                            ?>
                     <section class="blok1">
                         <div class="head-comment">
                             <div>
                                 <div class="avatar"></div>
                             </div>
                             <div class="comment-content">
-                                <h4>Иванов Иван</h4>
-                                <p>Не следует, однако забывать, что новая модель организационной деятельности влечет за собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности
-                                    же сложившаяся струкрура организации в значительной степени обуславливает создание соответствующих условий активации Товарищи! укрепление и развитие структуры играет важную роль в формировании форм развития.</p>
+                         
+                                <h4><?php echo $res['user_created']?></h4>
+                                <p><?php echo $res['comment']?></p>
                             </div>
                         </div>
                     </section>
+                           <?php } ?>
+                    <!-- section class blok1 end -->
                     <!-- <section class="blok1">
                         <div class="head-comment">
                             <div>
@@ -151,23 +180,25 @@
                     </section> -->
                     <div class="textarea">
                       
-                        <?php 
-                        if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
-                            $userid = $_COOKIE['userid'];
-                        $useremail = $_COOKIE['useremail'];
-                        echo $userid . 'ok';
-                       
-                        echo '<p style="color:red;"> Вы вошли как <span  style="color:red;font-weight:bold;">' .  $useremail . '</span>!';
-                        ?>
-                          <h4>Добавить комментарий</h4>
-                        <form method="$_GET">
+                       <?php
+                        if($_COOKIE['auth'] == true){ ?>
+                          <h4><?php echo  $username . " " .$usersurname .'!   Добавьте пожалуйста свой комментарий!';
+                          ?></h4>
+                          <h5><?php if(success_com != NULL)echo  $success_com;
+                          ?></h5>
+                          <form method="$_GET">
                             <input type="hidden" name ="id" value="<?php echo  $news_id; ?>">
                             <input type="hidden" name ="user" value="<?php echo $userid ; ?>">
 
                             <textarea name="comment"  cols="30" rows="10"></textarea>
                             <input type="submit" name="" class="button inp-but" value="Добавить" >
                         </form>
-                    <?php }else{echo "no";}?>
+                          <?php }else { ?>
+                            <h4><?php echo ' Комментарии могут оставлять только зарегистрированные пользователи!';
+                          ?></h4>
+                          <?php } ?>
+                        
+                    
                     </div>
                 </div>
             </div>

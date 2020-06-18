@@ -64,7 +64,7 @@
        
             <div class="content-top-left">
             <?php
-          $result = $mysqli->query("SELECT  * FROM `news` ORDER BY `news_id` DESC  LIMIT 2"); 
+          $result = $mysqli->query("SELECT  * FROM `news` ORDER BY `news_id` DESC  LIMIT 0,2"); 
                     foreach($result as $res){ 
                         
                     ?>
@@ -107,7 +107,7 @@
             <div class="image"></div>
             <div class="content-bottom">
             <?php
-          $result = $mysqli->query("SELECT * FROM news  ORDER BY news_id DESC LIMIT 1 "); 
+          $result = $mysqli->query("SELECT * FROM news  ORDER BY news_id DESC LIMIT 3,4 "); 
                                     
                     foreach($result as $res){ 
                         
