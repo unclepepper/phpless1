@@ -1,4 +1,7 @@
 <?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
     if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
         header('Location: http://as-ps.ru/index.php');  //Если авторизован, то перенаправляем на главную страницу
     }
