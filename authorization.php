@@ -1,6 +1,6 @@
 <?php
     if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
-        header('Location: http://php-lesson.loc/index.php');  //Если авторизован, то перенаправляем на главную страницу
+        header('Location: http://as-ps.ru/index.php');  //Если авторизован, то перенаправляем на главную страницу
     }
     // $exit = isset($_GET['exit']); 
   
@@ -40,7 +40,7 @@
                     SetCookie("username", $row['name']);
                     SetCookie("usersurname", $row['surname']);
                     SetCookie("login", $row['login']);
-                    header('Location: http://php-lesson.loc/index.php');  //Перенаправляем на главную страницу
+                    header('Location: http://as-ps.ru/index.php');  //Перенаправляем на главную страницу
                      $success_auth = ' Пользователь ' .$email . ' авторизован!';
                 } else {
                     $error_auth = 'Не правильная почта или пароль!'; //Если пароли не сошлись тогда выводим ошибку
@@ -90,8 +90,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css"> -->
+        <title>Авторизация и регистрация</title>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
