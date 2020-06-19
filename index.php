@@ -1,12 +1,17 @@
 <?php
+// ini_set('error_reporting', E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
      $mysqli = new mysqli('localhost', 'root', '', 'blog'); //Создаем подключение к базе данных
      $mysqli->set_charset("utf8");
      if ($mysqli->connect_errno) {
          echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
      }
-    //  $result = $mysqli->query("SELECT * FROM `news` ORDER BY news_id DESC LIMIT 3"); 
- 
-    //  $row = $result->fetch_assoc(); //Извлекаем массив с данными 
+     if(isset($_GET['exit'])){
+        $exit = $_GET['exit'];
+     }
+    
+  
      
 ?>
 <!DOCTYPE html>
@@ -32,9 +37,11 @@
                     <ul>
                         <li><a href="page1.php">Статьи</a></li>
                         <li><a href="news.php">Новости</a></li>
-                        <li><a href="">Обо мне</a></li>
-                        <li><a href="authorization.php">Авторизация</a></li>
+                        <li><a href="">Обо мне</a></li>  
+                        <li><a href="authorization.php">вторизация</a></li>
                         <li><a href="authorization.php">Регистрация</a></li>
+                              
+                       
                     </ul>
                 </div>
             </div>
@@ -54,8 +61,30 @@
             <button type="submit" class="button">Искать</button>
         </div>
         <div class="link-search param-left">
+                          <?php
+                                if(isset($_COOKIE['auth']) == 'true') {//Получаем куки и проверяем авторизован ли пользователь
+                                    $auth =  $_COOKIE['auth'];
+                                $userid = $_COOKIE['userid'];
+                                $useremail = $_COOKIE['useremail'];
+                                $username = $_COOKIE['username'];
+                                $usersurname = $_COOKIE['usersurname'];?>
+                                <div class='user'>
+                                <h5><?php echo $username . ' ' .  $usersurname ?></h5>
+                                <form method="$_GET">
+                                    <input type="hidden" name='exit' value='exit'>
+                                <input type='submit' value='Выйти' class='exit'>
+                                </form>
+                                <?php  if($exit == 'exit' ){
+                                   
+                                  
+                                    echo 'Как то нужно теперь разлогиниться';
+                                         } ?>
+                                </div>
+                               
+                               <?php  }else {?>
             <a href="authorization.php">Авторизация</a>
             <a href="authorization.php">Регистрация</a>
+            <?php  } ?>
         </div>
     </div>
     <div class="wrap ">
@@ -72,7 +101,7 @@
                     <h3><?php echo $res['title']; ?></h3>
                     <?php 
                     setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
-                                //$time = strtotime($res['created']);
+                                $time = strtotime($res['created']);
                                 $newstime = strftime("%d %B %y",$res['created']);
                                 $time = iconv('windows-1251', 'utf-8', $newstime);
                                 ?>

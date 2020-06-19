@@ -1,11 +1,9 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-    if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
-        header('Location: http://as-ps.ru/index.php');  //Если авторизован, то перенаправляем на главную страницу
+
+    if(isset($_COOKIE['auth']) == 'true') { //Получаем куки и проверяем авторизован ли пользователь
+      header('Location: http://as-ps.ru/index.php');  //Если авторизован, то перенаправляем на главную страницу
     }
-    // $exit = isset($_GET['exit']); 
+ 
   
 	function formastr($str) {
 		$str = trim($str);
@@ -23,9 +21,10 @@ ini_set('display_startup_errors', 1);
     $error_reg = ''; //Текст ошибки для регистрации
     $success_auth = ''; 
     $success_reg = ''; 
-
-
+ 
+ 
     $type = $_GET['type']; //Получаем тип запроса
+
                 
     if($type == 'auth') { //Если тип запроса 'auth' тогда проверяем почту и пароль для авторизации пользователя
        
@@ -35,14 +34,14 @@ ini_set('display_startup_errors', 1);
             $result = $mysqli->query("SELECT * FROM `users` WHERE `email` = '".$email."'"); //Выполняем запрос на получение информации о пользователе по почте
             $row = $result->fetch_assoc(); //Извлекаем массив с данными пользователя
             //Проверяем сходится ли пароль из базы данных с паролем который ввел пользователь
-                if( $row['email']==$email || $row['login']==$email ){
+                if( $row['email']==$email){
                     if ($row['password'] == $password) {
-                    SetCookie("auth", "true"); //Устанавливаем куки что пользователь авторизован
+                    SetCookie("auth", "true",time()+3600); //Устанавливаем куки что пользователь авторизован
                     SetCookie("userid", $row['user_id']);
                     SetCookie("useremail", $row['email']);
                     SetCookie("username", $row['name']);
                     SetCookie("usersurname", $row['surname']);
-                    SetCookie("login", $row['login']);
+                    // SetCookie("login", $row['login']);
                     header('Location: http://as-ps.ru/index.php');  //Перенаправляем на главную страницу
                      $success_auth = ' Пользователь ' .$email . ' авторизован!';
                 } else {

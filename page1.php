@@ -1,10 +1,11 @@
 <?php
- 
+    
      $mysqli = new mysqli('localhost', 'root', '', 'blog'); //Создаем подключение к базе данных
     //  $mysqli->set_charset("utf8");
      if ($mysqli->connect_errno) {
          echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
      }
+  
      $comment = $_GET['comment'];
      $news_id = $_GET['id'];
      $news_id = (int)$news_id;
@@ -13,17 +14,18 @@
      
 
      $success_com = '';
-     if($_COOKIE['auth'] == 'true') { //Получаем куки и проверяем авторизован ли пользователь
+   
+     if(isset($_COOKIE['auth']) == 'true') { //Получаем куки и проверяем авторизован ли пользователь
          $userid = $_COOKIE['userid'];
         $useremail = $_COOKIE['useremail'];
         $username = $_COOKIE['username'];
         $usersurname = $_COOKIE['usersurname'];
             if($comment != NULL ){
                 $insert = $mysqli->query("INSERT INTO `comments` (`comment_id`, `news_id`, `user_created`, `comment`,`created`) VALUES (NULL, '".$news_id."', '".$userid."', '".$comment."', '".$created."')");
-                $resul = $mysqli->query("SELECT * FROM `comments` WHERE `comment` = '".$comment."'");
+               // $resul = $mysqli->query("SELECT * FROM `comments` WHERE `comment` = '".$comment."'");
                
                     $success_com = 'Комментарий успешно добавлен!';
-               
+                  
             }else if(isset($comment)){
                 $success_com = 'Напишите свой комментарий!';
             }
@@ -31,14 +33,7 @@
       
      }
     
-   
      
-    
-   
-    
-       
-     
-
                     
 ?>
 <!DOCTYPE html>
@@ -86,8 +81,27 @@
             <button type="submit" class="button">Искать</button>
         </div>
         <div class="link-search param-left">
+        <?php
+                                if(isset($_COOKIE['auth']) == 'true') { //Получаем куки и проверяем авторизован ли пользователь
+                                $userid = $_COOKIE['userid'];
+                                $useremail = $_COOKIE['useremail'];
+                                $username = $_COOKIE['username'];
+                                $usersurname = $_COOKIE['usersurname'];?>
+                                <div class='user'>
+                                <h5><?php echo $username . ' ' .  $usersurname ?></h5>
+                                <form method="$_GET">
+                                    <input type="hidden" name='exit' value='exit'>
+                                    <input type='submit' value='Выйти' class='exit'>
+                                </form>
+                                <?php  if($exit == 'exit' ){
+                                    echo 'Как то нужно теперь разлогиниться';
+                                         } ?>
+                                </div>
+                               
+                               <?php  }else {?>
             <a href="authorization.php">Авторизация</a>
             <a href="authorization.php">Регистрация</a>
+            <?php  } ?>
         </div>
     </div>
     <div class="wrap">
@@ -111,7 +125,7 @@
                 <?php 
               
                     echo $row['desc_large'];
-               
+                   
                 ?>
                 </p>
                 
@@ -124,8 +138,17 @@
                 </div>
                 <div class="comment">
                     <h3>Комментарии</h3>
-                    <?php  $com = $mysqli->query("SELECT  * FROM `comments` WHERE `news_id` = '".$news_id."'"); 
+                    <?php  $com = $mysqli->query("SELECT  * FROM `comments` WHERE `news_id` = '".$news_id."'");
+                     
                            foreach($com as $res){ 
+                            $usres = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$res['user_created']."'");
+                            foreach($usres as $rus){ 
+                                if( $rus['user_id']== $res['user_created']){
+                                    $name = $rus['name'];
+                                    $surname = $rus['surname'];
+
+                                }else {echo 'no name';}
+                            }
                         
                             ?>
                     <section class="blok1">
@@ -135,7 +158,7 @@
                             </div>
                             <div class="comment-content">
                          
-                                <h4><?php echo $res['user_created']?></h4>
+                                <h4><?php echo $name . ' ' . $surname?></h4>
                                 <p><?php echo $res['comment']?></p>
                             </div>
                         </div>
@@ -184,20 +207,25 @@
                         if($_COOKIE['auth'] == true){ ?>
                           <h4><?php echo  $username . " " .$usersurname .'!   Добавьте пожалуйста свой комментарий!';
                           ?></h4>
-                          <h5><?php if(success_com != NULL)echo  $success_com;
+                          <h5><?php if(success_com != NULL){
+                              echo  $success_com;
+                             
+                            }
                           ?></h5>
                           <form method="$_GET">
                             <input type="hidden" name ="id" value="<?php echo  $news_id; ?>">
                             <input type="hidden" name ="user" value="<?php echo $userid ; ?>">
 
-                            <textarea name="comment"  cols="30" rows="10"></textarea>
+                            <textarea name="comment" cols="30" rows="10"></textarea>
+                        
                             <input type="submit" name="" class="button inp-but" value="Добавить" >
+                          
                         </form>
                           <?php }else { ?>
                             <h4><?php echo ' Комментарии могут оставлять только зарегистрированные пользователи!';
                           ?></h4>
                           <?php } ?>
-                        
+                          
                     
                     </div>
                 </div>

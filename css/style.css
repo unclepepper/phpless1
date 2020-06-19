@@ -1,602 +1,622 @@
-                                            body {
-                                            margin: 0;
-                                            padding: 0;
-                                            font-size: 14px;
-                                            font-family: 'Montserrat', sans-serif;
-                                        }
-                                        
-                                        .param {
-                                            margin-left: 8%;
-                                        }
-                                        
-                                        .param-left {
-                                            margin-right: 8%;
-                                        }
-                                        
-                                        .top {
-                                            background-color: #3C4CAD;
-                                            width: 100%;
-                                            height: 65px;
-                                            color: #fff;
-                                            display: flex;
-                                            justify-content: space-between;
-                                            align-items: center;
-                                        }
-                                        
-                                        .nav {
-                                            display: flex;
-                                            justify-content: space-between;
-                                        }
-                                        
-                                        .nav a {
-                                            text-decoration: none;
-                                            color: #fff;
-                                        }
-                                        
-                                        .nav a:not(:last-of-type) {
-                                            margin-right: 20px;
-                                        }
-                                        
-                                        .device-menu {
-                                            display: none;
-                                        }
-                                        
-                                        .search {
-                                            background-color: #5E72EB;
-                                            width: 100%;
-                                            height: 50px;
-                                            display: flex;
-                                            justify-content: space-between;
-                                            align-items: center;
-                                        }
-                                        
-                                        .link-search a {
-                                            text-decoration: none;
-                                            color: #fff;
-                                        }
-                                        
-                                        .link-search a:not(:last-of-type) {
-                                            margin-right: 20px;
-                                        }
-                                        
-                                        .window-search input,
-                                        button {
-                                            height: 34px;
-                                            border-radius: 3px;
-                                        }
-                                        
-                                        .window-search input {
-                                            width: 63%;
-                                            /* width: 268px; */
-                                            color: #000;
-                                            border: none;
-                                            padding: 0 20px;
-                                        }
-                                        
-                                        .window-search button {
-                                            width: 22%;
-                                        }
-                                        
-                                        .button {
-                                            background-color: #56C596;
-                                            color: #fff;
-                                            border: none;
-                                            /* width: 100px; */
-                                        }
-                                        
-                                        .inp-but {
-                                            text-decoration: none;
-                                            color: #fff;
-                                            display: block;
-                                            text-align: center;
-                                            line-height: 34px;
-                                            width: 150px;
-                                            height: 34px;
-                                            border-radius: 3px;
-                                        }
-                                        
-                                        .wrap {
-                                            display: flex;
-                                            justify-content: space-between;
-                                        }
-                                        
-                                        .main {
-                                            display: flex;
-                                            flex-wrap: wrap;
-                                            width: 60%;
-                                        }
-                                        
-                                        .content-top {
-                                            margin-bottom: 50px;
-                                        }
-                                        
-                                        .head {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            align-items: center;
-                                        }
-                                        
-                                        .content-top-left {
-                                            width: 100%;
-                                            box-shadow: 1px 15px 35px #E5E5E5;
-                                            padding: 20px;
-                                            margin: 30px 0;
-                                            border: 1px solid #E5E5E5;
-                                            border-radius: 5px;
-                                            text-align: justify;
-                                        }
-                                        
-                                        .content-foot {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            align-items: center;
-                                        }
-                                        
-                                        .content-top-left span:first-of-type {
-                                            margin-right: 20px;
-                                        }
-                                        
-                                        .site-bar {
-                                            margin-left: 20px;
-                                            width: 22%;
-                                        }
-                                        
-                                        .content-top-right {
-                                            box-shadow: 1px 15px 35px #E5E5E5;
-                                            padding: 20px;
-                                            margin-top: 30px;
-                                            border: 1px solid #E5E5E5;
-                                            border-radius: 5px;
-                                        }
-                                        
-                                        .content-top-right li {
-                                            list-style: none;
-                                        }
-                                        
-                                        .content-top-right a {
-                                            text-decoration: none;
-                                            color: #000;
-                                        }
-                                        
-                                        .content-top-right li:nth-last-of-type(1) {
-                                            margin-left: 15px
-                                        }
-                                        
-                                        .content-top-right ul {
-                                            margin-top: 0;
-                                        }
-                                        
-                                        .content-bottom {
-                                            width: 100%;
-                                            box-shadow: 1px 15px 35px #E5E5E5;
-                                            margin-top: 30px;
-                                            border: 1px solid #E5E5E5;
-                                            padding: 20px;
-                                            border-radius: 5px;
-                                            text-align: justify;
-                                            margin-bottom: 50px;
-                                        }
-                                        
-                                        .image {
-                                            width: 100%;
-                                            height: 300px;
-                                            padding: 20px;
-                                            background-image: url('../image/Картинка.png');
-                                            background-repeat: no-repeat;
-                                            background-size: cover;
-                                            box-shadow: 1px 15px 35px #E5E5E5;
-                                            border: 1px solid #E5E5E5;
-                                            border-radius: 5px;
-                                        }
-                                        
-                                        .footer {
-                                            width: 100%;
-                                            background-color: #414141;
-                                            height: 65px;
-                                            color: #fff;
-                                            display: flex;
-                                            justify-content: space-between;
-                                            align-items: center;
-                                            margin-top: 20px;
-                                        }
-                                        /* page1.html */
-                                        
-                                        .page {
-                                            height: 350px;
-                                        }
-                                        
-                                        .link-search-authorization a {
-                                            font-size: 15px;
-                                            color: white;
-                                        }
-                                        
-                                        .head-comment {
-                                            display: flex;
-                                            justify-content: stretch;
-                                            text-align: justify;
-                                            padding: 0;
-                                        }
-                                        
-                                        .avatar {
-                                            width: 40px;
-                                            height: 40px;
-                                            background-color: #000;
-                                            border-radius: 100px;
-                                            margin-right: 15px;
-                                            margin-top: 22px;
-                                        }
-                                        
-                                        .textarea {
-                                            width: 100%;
-                                        }
-                                        
-                                        .textarea textarea {
-                                            width: 100%;
-                                            border: 1px solid #E5E5E5;
-                                            border-radius: 5px;
-                                            margin-bottom: 20px;
-                                        }
-                                        
-                                        .content-foot .button {
-                                            width: 70px;
-                                        }
-                                        /* authorisation */
-                                        
-                                        .blok-login {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            align-content: center;
-                                        }
-                                        
-                                        .authorization {
-                                            width: 590px;
-                                            display: flex;
-                                            flex-wrap: wrap;
-                                            align-self: flex-start;
-                                            margin-right: 7%;
-                                        }
-                                        
-                                        .authorization form {
-                                            width: 100%;
-                                        }
-                                        
-                                        .registration form {
-                                            width: 100%;
-                                        }
-                                        
-                                        .authorization input {
-                                            margin-bottom: 10px;
-                                        }
-                                        
-                                        .input-all input {
-                                            width: 100%;
-                                            border: 1px solid #E5E5E5;
-                                            border-radius: 5px;
-                                            height: 34px;
-                                            padding: 0 6%;
-                                            box-shadow: 0 1px 2px #E5E5E5;
-                                        }
-                                        
-                                        .registration-all {
-                                            display: flex;
-                                            text-align: center;
-                                            flex-wrap: wrap;
-                                            width: 100%;
-                                        }
-                                        
-                                        .registration {
-                                            width: 100%;
-                                            display: flex;
-                                            flex-wrap: wrap;
-                                        }
-                                        
-                                        .registration:not(:last-of-type) {
-                                            margin-right: 10%;
-                                        }
-                                        
-                                        .registration:not(:first-of-type) {
-                                            margin-top: 54px;
-                                        }
-                                        
-                                        .registration input {
-                                            margin-bottom: 10px;
-                                            margin-top: 0;
-                                        }
-                                        
-                                        .button-authorization {
-                                            margin-top: 20px;
-                                            width: 100%;
-                                        }
-                                        
-                                        .button-registration {
-                                            width: 100%;
-                                            height: 34px;
-                                            border-radius: 3px;
-                                            margin-bottom: 50px;
-                                            margin-top: 20px;
-                                        }
-                                        
-                                        .test {
-                                            display: flex;
-                                            justify-content: space-between;
-                                        }
-                                        /* block news */
-                                        
-                                        .logo a {
-                                            text-decoration: none;
-                                            color: #fff;
-                                        }
-                                        
-                                        .wrap-news {
-                                            margin: 40px 0;
-                                            background-color: #E9E9E9;
-                                            width: 100%;
-                                            padding: 1px 0 20px 0;
-                                        }
-                                        
-                                        .wrap-news h3 {
-                                            margin-left: 5%;
-                                            margin-bottom: 20px;
-                                        }
-                                        
-                                        .param-news {
-                                            margin: 0 8%;
-                                        }
-                                        
-                                        .input-news-all {
-                                            border: 1px solid #E5E5E5;
-                                            border-radius: 5px;
-                                            height: 34px;
-                                            padding: 0 2%;
-                                            box-shadow: 0 1px 2px #E5E5E5;
-                                        }
-                                        
-                                        .input-news {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            margin-bottom: 20px;
-                                        }
-                                        
-                                        .input-news input {
-                                            width: 40%;
-                                        }
-                                        
-                                        .textarea-news-little {
-                                            margin-bottom: 20px;
-                                        }
-                                        
-                                        .textarea-news-little textarea {
-                                            padding: 1% 2%;
-                                            width: 96%;
-                                            height: 100px;
-                                            font-size: 14px;
-                                            font-family: 'Montserrat', sans-serif;
-                                        }
-                                        
-                                        .textarea-news-big {
-                                            margin-bottom: 20px;
-                                        }
-                                        
-                                        .textarea-news-big textarea {
-                                            padding: 1% 2%;
-                                            width: 96%;
-                                            height: 200px;
-                                            font-size: 14px;
-                                            font-family: 'Montserrat', sans-serif;
-                                        }
-                                        
-                                        .button-news {
-                                            width: 200px;
-                                            height: 34px;
-                                        }
-                                        /* new_user */
-                                        
-                                        .wrap-news-user {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            width: 100%;
-                                        }
-                                        
-                                        .input-news-user {
-                                            display: flex;
-                                            flex-wrap: wrap;
-                                            margin-bottom: 20px;
-                                        }
-                                        
-                                        .input-news-user input {
-                                            width: 100%;
-                                            margin-bottom: 10px;
-                                        }
-                                        
-                                        .input-news-user button {
-                                            width: 100%;
-                                            margin-bottom: 10px;
-                                        }
-                                        
-                                        @media (max-width: 1198px) {
-                                            .image {
-                                                height: 250px;
-                                            }
-                                        }
-                                        
-                                        @media (max-width: 1084px) {
-                                            .image {
-                                                height: 200px;
-                                            }
-                                        }
-                                        
-                                        @media (max-width: 1084px) {
-                                            .image {
-                                                height: 180px;
-                                            }
-                                        }
-                                        
-                                        @media screen and (max-width: 768px) {
-                                            .wrap {
-                                                display: flex;
-                                                flex-wrap: wrap;
-                                            }
-                                            .main {
-                                                width: 90%;
-                                            }
-                                            .param {
-                                                margin-left: 5%;
-                                            }
-                                            .param-left {
-                                                margin-right: 5%;
-                                            }
-                                            .window-search input {
-                                                width: 50%;
-                                            }
-                                            .image {
-                                                height: 200px;
-                                            }
-                                            .site-bar {
-                                                width: 90%;
-                                                margin-bottom: 30px;
-                                                margin-top: 0;
-                                            }
-                                            .content-bottom {
-                                                margin-bottom: 10px;
-                                            }
-                                            .test {
-                                                display: flex;
-                                                flex-wrap: wrap;
-                                            }
-                                            .form {
-                                                width: 100%;
-                                                display: flex;
-                                                flex-wrap: wrap;
-                                            }
-                                            @media screen and (max-width: 506px) {
-                                                .device-menu {
-                                                    width: 30px;
-                                                    height: 30px;
-                                                    background-image: url("../image/device_menu_white.png");
-                                                    background-size: cover;
-                                                    background-position: center;
-                                                    display: block;
-                                                    border-radius: 2px;
-                                                }
-                                                .hidden-menu {
-                                                    display: none;
-                                                }
-                                                .device-menu:hover {
-                                                    box-shadow: 0 0 5px #000;
-                                                    cursor: pointer;
-                                                }
-                                                .device-menu:active {
-                                                    box-shadow: 0 0 3px #fff;
-                                                    width: 29px;
-                                                    height: 29px;
-                                                }
-                                                .hidden-menu-wrap {
-                                                    display: none;
-                                                    position: absolute;
-                                                    top: 0;
-                                                    left: 0;
-                                                    width: 100%;
-                                                    height: 75%;
-                                                    margin: 0 auto;
-                                                    /* padding: 0 10px; */
-                                                }
-                                                .block {
-                                                    display: block;
-                                                }
-                                                .hidden-menu {
-                                                    width: 100%;
-                                                    border-radius: 1px;
-                                                    height: 55%;
-                                                    background-color: #5E72EB;
-                                                    padding-top: 10px;
-                                                }
-                                                .hidden-menu li {
-                                                    /* padding: 0 30px; */
-                                                    list-style: none;
-                                                    color: #fff;
-                                                    line-height: 50px;
-                                                    width: 80%;
-                                                    text-align: center;
-                                                }
-                                                .hidden-menu a:hover {
-                                                    font-size: 16px;
-                                                }
-                                                .hidden-menu ul {
-                                                    margin: auto;
-                                                    width: 90%;
-                                                }
-                                                .hidden-menu a {
-                                                    text-decoration: none;
-                                                    color: #fff;
-                                                }
-                                                .hidden-menu a:active {
-                                                    font-size: 14px;
-                                                }
-                                                .close {
-                                                    width: 100%;
-                                                    margin-bottom: 20px;
-                                                }
-                                                .close img {
-                                                    width: 30px;
-                                                    float: right;
-                                                    margin-right: 20px;
-                                                }
-                                                .close img:hover {
-                                                    box-shadow: 0 0 10px #fff;
-                                                    border-radius: 50px;
-                                                }
-                                                .close img:active {
-                                                    box-shadow: 0 0 5px #fff;
-                                                    border-radius: 50px;
-                                                    border: 0.5px solid #fff;
-                                                }
-                                                .nav {
-                                                    display: none;
-                                                }
-                                                .link-search a {
-                                                    display: none;
-                                                }
-                                                .link-search-authorization {
-                                                    display: none;
-                                                }
-                                                .image {
-                                                    height: 90px;
-                                                }
-                                                .wrap-news-user {
-                                                    display: flex;
-                                                    flex-wrap: wrap;
-                                                }
-                                                .input-news-user {
-                                                    width: 100%;
-                                                }
-                                                .blok-login {
-                                                    display: flex;
-                                                    flex-wrap: wrap;
-                                                }
-                                                .input-news {
-                                                    display: flex;
-                                                    flex-wrap: wrap;
-                                                }
-                                                .input-news-all {
-                                                    width: 100%;
-                                                }
-                                                .wrap-news {
-                                                    display: flex;
-                                                    flex-wrap: wrap;
-                                                }
-                                                .input-news {
-                                                    width: 100%;
-                                                }
-                                                .param-news {
-                                                    width: 100%;
-                                                }
-                                                .param-form {
-                                                    margin-right: 8%;
-                                                }
-                                                .param-form-left {
-                                                    padding-right: 8%;
-                                                }
-                                                .form-news {
-                                                    margin-right: 15%;
-                                                }
-                                            }
+             body {
+             margin: 0;
+             padding: 0;
+             font-size: 14px;
+             font-family: 'Montserrat', sans-serif;
+         }
+         
+         .param {
+             margin-left: 8%;
+         }
+         
+         .param-left {
+             margin-right: 8%;
+         }
+         
+         .top {
+             background-color: #3C4CAD;
+             width: 100%;
+             height: 65px;
+             color: #fff;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+         
+         .nav {
+             display: flex;
+             justify-content: space-between;
+         }
+         
+         .nav a {
+             text-decoration: none;
+             color: #fff;
+         }
+         
+         .nav a:not(:last-of-type) {
+             margin-right: 20px;
+         }
+         
+         .device-menu {
+             display: none;
+         }
+         
+         .search {
+             background-color: #5E72EB;
+             width: 100%;
+             height: 50px;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+         
+         .link-search a {
+             text-decoration: none;
+             color: #fff;
+         }
+         
+         .link-search a:not(:last-of-type) {
+             margin-right: 20px;
+         }
+         
+         .window-search input,
+         button {
+             height: 34px;
+             border-radius: 3px;
+         }
+         
+         .window-search input {
+             width: 63%;
+             /* width: 268px; */
+             color: #000;
+             border: none;
+             padding: 0 20px;
+         }
+         
+         .window-search button {
+             width: 22%;
+         }
+         
+         .button {
+             background-color: #56C596;
+             color: #fff;
+             border: none;
+             /* width: 100px; */
+         }
+         
+         .inp-but {
+             text-decoration: none;
+             color: #fff;
+             display: block;
+             text-align: center;
+             line-height: 34px;
+             width: 150px;
+             height: 34px;
+             border-radius: 3px;
+         }
+         
+         .user {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+         
+         .user h5 {
+             color: #fff;
+             margin-right: 15px;
+         }
+         
+         .exit {
+             color: #fff;
+             background-color: #56C596;
+             border-radius: 3px;
+             border: none;
+             height: 24px;
+             cursor: pointer;
+         }
+         
+         .wrap {
+             display: flex;
+             justify-content: space-between;
+         }
+         
+         .main {
+             display: flex;
+             flex-wrap: wrap;
+             width: 60%;
+         }
+         
+         .content-top {
+             margin-bottom: 50px;
+         }
+         
+         .head {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+         
+         .content-top-left {
+             width: 100%;
+             box-shadow: 1px 15px 35px #E5E5E5;
+             padding: 20px;
+             margin: 30px 0;
+             border: 1px solid #E5E5E5;
+             border-radius: 5px;
+             text-align: justify;
+         }
+         
+         .content-foot {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+         
+         .content-top-left span:first-of-type {
+             margin-right: 20px;
+         }
+         
+         .site-bar {
+             margin-left: 20px;
+             width: 22%;
+         }
+         
+         .content-top-right {
+             box-shadow: 1px 15px 35px #E5E5E5;
+             padding: 20px;
+             margin-top: 30px;
+             border: 1px solid #E5E5E5;
+             border-radius: 5px;
+         }
+         
+         .content-top-right li {
+             list-style: none;
+         }
+         
+         .content-top-right a {
+             text-decoration: none;
+             color: #000;
+         }
+         
+         .content-top-right li:nth-last-of-type(1) {
+             margin-left: 15px
+         }
+         
+         .content-top-right ul {
+             margin-top: 0;
+         }
+         
+         .content-bottom {
+             width: 100%;
+             box-shadow: 1px 15px 35px #E5E5E5;
+             margin-top: 30px;
+             border: 1px solid #E5E5E5;
+             padding: 20px;
+             border-radius: 5px;
+             text-align: justify;
+             margin-bottom: 50px;
+         }
+         
+         .image {
+             width: 100%;
+             height: 300px;
+             padding: 20px;
+             background-image: url('../image/Картинка.png');
+             background-repeat: no-repeat;
+             background-size: cover;
+             box-shadow: 1px 15px 35px #E5E5E5;
+             border: 1px solid #E5E5E5;
+             border-radius: 5px;
+         }
+         
+         .footer {
+             width: 100%;
+             background-color: #414141;
+             height: 65px;
+             color: #fff;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             margin-top: 20px;
+         }
+         /* page1.html */
+         
+         .page {
+             height: 350px;
+         }
+         
+         .link-search-authorization a {
+             font-size: 15px;
+             color: white;
+         }
+         
+         .head-comment {
+             display: flex;
+             justify-content: stretch;
+             text-align: justify;
+             padding: 0;
+         }
+         
+         .avatar {
+             width: 40px;
+             height: 40px;
+             background-color: #000;
+             border-radius: 100px;
+             margin-right: 15px;
+             margin-top: 22px;
+         }
+         
+         .textarea {
+             width: 100%;
+         }
+         
+         .textarea textarea {
+             width: 100%;
+             border: 1px solid #E5E5E5;
+             border-radius: 5px;
+             margin-bottom: 20px;
+         }
+         
+         .content-foot .button {
+             width: 70px;
+         }
+         /* authorisation */
+         
+         .blok-login {
+             display: flex;
+             justify-content: space-between;
+             align-content: center;
+         }
+         
+         .authorization {
+             width: 590px;
+             display: flex;
+             flex-wrap: wrap;
+             align-self: flex-start;
+             margin-right: 7%;
+         }
+         
+         .authorization form {
+             width: 100%;
+         }
+         
+         .registration form {
+             width: 100%;
+         }
+         
+         .authorization input {
+             margin-bottom: 10px;
+         }
+         
+         .input-all input {
+             width: 100%;
+             border: 1px solid #E5E5E5;
+             border-radius: 5px;
+             height: 34px;
+             padding: 0 6%;
+             box-shadow: 0 1px 2px #E5E5E5;
+         }
+         
+         .registration-all {
+             display: flex;
+             text-align: center;
+             flex-wrap: wrap;
+             width: 100%;
+         }
+         
+         .registration {
+             width: 100%;
+             display: flex;
+             flex-wrap: wrap;
+         }
+         
+         .registration:not(:last-of-type) {
+             margin-right: 10%;
+         }
+         
+         .registration:not(:first-of-type) {
+             margin-top: 54px;
+         }
+         
+         .registration input {
+             margin-bottom: 10px;
+             margin-top: 0;
+         }
+         
+         .button-authorization {
+             margin-top: 20px;
+             width: 100%;
+         }
+         
+         .button-registration {
+             width: 100%;
+             height: 34px;
+             border-radius: 3px;
+             margin-bottom: 50px;
+             margin-top: 20px;
+         }
+         
+         .test {
+             display: flex;
+             justify-content: space-between;
+         }
+         /* block news */
+         
+         .logo a {
+             text-decoration: none;
+             color: #fff;
+         }
+         
+         .wrap-news {
+             margin: 40px 0;
+             background-color: #E9E9E9;
+             width: 100%;
+             padding: 1px 0 20px 0;
+         }
+         
+         .wrap-news h3 {
+             margin-left: 5%;
+             margin-bottom: 20px;
+         }
+         
+         .param-news {
+             margin: 0 8%;
+         }
+         
+         .input-news-all {
+             border: 1px solid #E5E5E5;
+             border-radius: 5px;
+             height: 34px;
+             padding: 0 2%;
+             box-shadow: 0 1px 2px #E5E5E5;
+         }
+         
+         .input-news {
+             display: flex;
+             justify-content: space-between;
+             margin-bottom: 20px;
+         }
+         
+         .input-news input {
+             width: 40%;
+         }
+         
+         .textarea-news-little {
+             margin-bottom: 20px;
+         }
+         
+         .textarea-news-little textarea {
+             padding: 1% 2%;
+             width: 96%;
+             height: 100px;
+             font-size: 14px;
+             font-family: 'Montserrat', sans-serif;
+         }
+         
+         .textarea-news-big {
+             margin-bottom: 20px;
+         }
+         
+         .textarea-news-big textarea {
+             padding: 1% 2%;
+             width: 96%;
+             height: 200px;
+             font-size: 14px;
+             font-family: 'Montserrat', sans-serif;
+         }
+         
+         .button-news {
+             width: 200px;
+             height: 34px;
+         }
+         /* new_user */
+         
+         .wrap-news-user {
+             display: flex;
+             justify-content: space-between;
+             width: 100%;
+         }
+         
+         .input-news-user {
+             display: flex;
+             flex-wrap: wrap;
+             margin-bottom: 20px;
+         }
+         
+         .input-news-user input {
+             width: 100%;
+             margin-bottom: 10px;
+         }
+         
+         .input-news-user button {
+             width: 100%;
+             margin-bottom: 10px;
+         }
+         
+         @media (max-width: 1198px) {
+             .image {
+                 height: 250px;
+             }
+         }
+         
+         @media (max-width: 1084px) {
+             .image {
+                 height: 200px;
+             }
+         }
+         
+         @media (max-width: 1084px) {
+             .image {
+                 height: 180px;
+             }
+         }
+         
+         @media screen and (max-width: 768px) {
+             .wrap {
+                 display: flex;
+                 flex-wrap: wrap;
+             }
+             .main {
+                 width: 90%;
+             }
+             .param {
+                 margin-left: 5%;
+             }
+             .param-left {
+                 margin-right: 5%;
+             }
+             .window-search input {
+                 width: 50%;
+             }
+             .image {
+                 height: 200px;
+             }
+             .site-bar {
+                 width: 90%;
+                 margin-bottom: 30px;
+                 margin-top: 0;
+             }
+             .content-bottom {
+                 margin-bottom: 10px;
+             }
+             .test {
+                 display: flex;
+                 flex-wrap: wrap;
+             }
+             .form {
+                 width: 100%;
+                 display: flex;
+                 flex-wrap: wrap;
+             }
+             @media screen and (max-width: 506px) {
+                 .device-menu {
+                     width: 30px;
+                     height: 30px;
+                     background-image: url("../image/device_menu_white.png");
+                     background-size: cover;
+                     background-position: center;
+                     display: block;
+                     border-radius: 2px;
+                 }
+                 .hidden-menu {
+                     display: none;
+                 }
+                 .device-menu:hover {
+                     box-shadow: 0 0 5px #000;
+                     cursor: pointer;
+                 }
+                 .device-menu:active {
+                     box-shadow: 0 0 3px #fff;
+                     width: 29px;
+                     height: 29px;
+                 }
+                 .hidden-menu-wrap {
+                     display: none;
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     width: 100%;
+                     height: 75%;
+                     margin: 0 auto;
+                     /* padding: 0 10px; */
+                 }
+                 .block {
+                     display: block;
+                 }
+                 .hidden-menu {
+                     width: 100%;
+                     border-radius: 1px;
+                     height: 55%;
+                     background-color: #5E72EB;
+                     padding-top: 10px;
+                 }
+                 .hidden-menu li {
+                     /* padding: 0 30px; */
+                     list-style: none;
+                     color: #fff;
+                     line-height: 50px;
+                     width: 80%;
+                     text-align: center;
+                 }
+                 .hidden-menu a:hover {
+                     font-size: 16px;
+                 }
+                 .hidden-menu ul {
+                     margin: auto;
+                     width: 90%;
+                 }
+                 .hidden-menu a {
+                     text-decoration: none;
+                     color: #fff;
+                 }
+                 .hidden-menu a:active {
+                     font-size: 14px;
+                 }
+                 .close {
+                     width: 100%;
+                     margin-bottom: 20px;
+                 }
+                 .close img {
+                     width: 30px;
+                     float: right;
+                     margin-right: 20px;
+                 }
+                 .close img:hover {
+                     box-shadow: 0 0 10px #fff;
+                     border-radius: 50px;
+                 }
+                 .close img:active {
+                     box-shadow: 0 0 5px #fff;
+                     border-radius: 50px;
+                     border: 0.5px solid #fff;
+                 }
+                 .nav {
+                     display: none;
+                 }
+                 .link-search a {
+                     display: none;
+                 }
+                 .link-search-authorization {
+                     display: none;
+                 }
+                 .image {
+                     height: 90px;
+                 }
+                 .wrap-news-user {
+                     display: flex;
+                     flex-wrap: wrap;
+                 }
+                 .input-news-user {
+                     width: 100%;
+                 }
+                 .blok-login {
+                     display: flex;
+                     flex-wrap: wrap;
+                 }
+                 .input-news {
+                     display: flex;
+                     flex-wrap: wrap;
+                 }
+                 .input-news-all {
+                     width: 100%;
+                 }
+                 .wrap-news {
+                     display: flex;
+                     flex-wrap: wrap;
+                 }
+                 .input-news {
+                     width: 100%;
+                 }
+                 .param-news {
+                     width: 100%;
+                 }
+                 .param-form {
+                     margin-right: 8%;
+                 }
+                 .param-form-left {
+                     padding-right: 8%;
+                 }
+                 .form-news {
+                     margin-right: 15%;
+                 }
+             }
