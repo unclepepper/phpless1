@@ -71,13 +71,12 @@
                                 <div class='user'>
                                 <h5><?php echo $username . ' ' .  $usersurname ?></h5>
                                 <form method="$_GET">
-                                    <input type="hidden" name='exit' value='exit'>
+                                    <input type="hidden" name='exit' value='ok'>
                                 <input type='submit' value='Выйти' class='exit'>
                                 </form>
-                                <?php  if($exit == 'exit' ){
+                                <?php  if($exit == 'ok' ){
                                    
-                                  
-                                    echo 'Как то нужно теперь разлогиниться';
+                                   include './logout.php';
                                          } ?>
                                 </div>
                                
@@ -122,8 +121,22 @@
                         <span>Лайки: 100</span>
                     </div>
                    
+                        <div class=but>
+                        
+                        <?php
+                        $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
+                        $is_admin = $admin->fetch_assoc();
+                       
+                        if($is_admin['is_admin']==1) {
+                            ?><a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but">Удалить </a>
+                       <?php }else{ ?>
+                           <div style="width:50px;"></div>
+                       <?php } ?>
+                       <a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but inp-but-read" >Читать </a>
 
-                    <a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but" >Читать </a>
+                        </div>
+                       
+
                    
                    
                 </div>
@@ -134,13 +147,14 @@
             <!-- content top -->
             <div class="image"></div>
             <div class="content-bottom">
+           
             <?php
-          $result = $mysqli->query("SELECT * FROM news  ORDER BY news_id DESC LIMIT 2,3 "); 
-                                    
+          $result = $mysqli->query("SELECT * FROM news  ORDER BY news_id DESC LIMIT 2,2 "); 
+                          
                     foreach($result as $res){ 
                         
                     ?>
-                <div class="head">
+                <div class="head">  
                 <h3><?php echo $res['title']; ?></h3>
                     <?php 
                     setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
@@ -162,14 +176,29 @@
                         <span>Просмотры: 300</span>
                         <span>Лайки: 100</span>
                     </div>
-                    <a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but" >Читать </a>
-                </div>
+                    <div class=but>
                        
+                    <?php
+                        $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
+                        $is_admin = $admin->fetch_assoc();
+                       
+                        if($is_admin['is_admin']==1) {
+                            ?><a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but">Удалить </a>
+                       <?php }else{ ?>
+                           <div style="width:50px;"></div>
+                       <?php } ?>
+                       <a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but inp-but-read" >Читать </a>
+                        </div>
+                      
+                    
+                       
+                </div>
+                <?php } ?> 
             </div> 
-            
+           
         </div>
         <!-- main end -->
-        <?php } ?>
+      
         <div class="site-bar param param-left">
             <div class="content-top-right">
                 <h3 class="content-top-right-alig">Разделы</h3>

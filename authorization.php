@@ -36,11 +36,11 @@
             //Проверяем сходится ли пароль из базы данных с паролем который ввел пользователь
                 if( $row['email']==$email){
                     if ($row['password'] == $password) {
-                    SetCookie("auth", "true",time()+3600); //Устанавливаем куки что пользователь авторизован
-                    SetCookie("userid", $row['user_id']);
-                    SetCookie("useremail", $row['email']);
-                    SetCookie("username", $row['name']);
-                    SetCookie("usersurname", $row['surname']);
+                    SetCookie("auth", "true",time()+3600,'/'); //Устанавливаем куки что пользователь авторизован
+                    SetCookie("userid", $row['user_id'],time()+3600,'/');
+                    SetCookie("useremail", $row['email'],time()+3600,'/');
+                    SetCookie("username", $row['name'],time()+3600,'/');
+                    SetCookie("usersurname", $row['surname'],time()+3600,'/');
                     // SetCookie("login", $row['login']);
                     header('Location: http://as-ps.ru/index.php');  //Перенаправляем на главную страницу
                      $success_auth = ' Пользователь ' .$email . ' авторизован!';

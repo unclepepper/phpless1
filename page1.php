@@ -5,7 +5,10 @@
      if ($mysqli->connect_errno) {
          echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
      }
-  
+     $delete = $_GET['delete'];
+     $comment_id = $_GET['comment_id'];
+
+  $exit = $_GET['exit'];
      $comment = $_GET['comment'];
      $news_id = $_GET['id'];
      $news_id = (int)$news_id;
@@ -24,17 +27,16 @@
                 $insert = $mysqli->query("INSERT INTO `comments` (`comment_id`, `news_id`, `user_created`, `comment`,`created`) VALUES (NULL, '".$news_id."', '".$userid."', '".$comment."', '".$created."')");
                // $resul = $mysqli->query("SELECT * FROM `comments` WHERE `comment` = '".$comment."'");
                
-                    $success_com = 'Комментарий успешно добавлен!';
-                  
+                    $success_com = 'Комментарий добавлен!';
+                    header('Location: /page1.php?id='. $news_id . '#comment');
             }else if(isset($comment)){
-                $success_com = 'Напишите свой комментарий!';
-            }
-      
-      
+                $success_com = 'Напишите комментарий!';
+            }     
      }
-    
-     
-                    
+   if($delete='ok'){
+        $mysqli->query("DELETE  FROM `comments` WHERE `comment_id` = '".$comment_id."'");
+  
+      }                 
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -86,15 +88,24 @@
                                 $userid = $_COOKIE['userid'];
                                 $useremail = $_COOKIE['useremail'];
                                 $username = $_COOKIE['username'];
-                                $usersurname = $_COOKIE['usersurname'];?>
+                                $usersurname = $_COOKIE['usersurname'];
+                                ?>
                                 <div class='user'>
                                 <h5><?php echo $username . ' ' .  $usersurname ?></h5>
                                 <form method="$_GET">
-                                    <input type="hidden" name='exit' value='exit'>
+                                    <input type="hidden" name='exit' value='ok'>
                                     <input type='submit' value='Выйти' class='exit'>
                                 </form>
-                                <?php  if($exit == 'exit' ){
-                                    echo 'Как то нужно теперь разлогиниться';
+                                <?php  if($exit == 'ok' ){
+                                   
+                                //   unset($_COOKIE['auth']);
+                                //   SetCookie("auth", "", time()-3600); 
+                                //   unset($_COOKIE['username']);
+                                //   SetCookie("username", "", time()-3600); 
+                                //   unset($_COOKIE['useremail']);
+                                //   SetCookie("useremail", "", time()-3600); 
+                                //   unset($_COOKIE['userid']);
+                                //   SetCookie("userid", "", time()-3600); 
                                          } ?>
                                 </div>
                                
@@ -152,11 +163,28 @@
                         
                             ?>
                     <section class="blok1">
+                    <?php
+                        $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
+                        $is_admin = $admin->fetch_assoc();
+                     
+
+                       
+                        if($is_admin['is_admin']==1) { ?>
+                       
+                    <a href="/page1.php?delete=ok&id=<?php echo $res['news_id'] ?>&comment_id=<?php echo $res['comment_id'] ?>" class="close-comment"><img src="image/close1.png" alt="close" width="20" title="delete"></a>
+                            
+                            
+                       <?php  } ?>
                         <div class="head-comment">
-                            <div>
+                       
+                            <div class="avatar-block">
+                         
                                 <div class="avatar"></div>
+                               
+                               
                             </div>
-                            <div class="comment-content">
+
+                            <div class="comment-content" id='comment'>
                          
                                 <h4><?php echo $name . ' ' . $surname?></h4>
                                 <p><?php echo $res['comment']?></p>
@@ -164,43 +192,7 @@
                         </div>
                     </section>
                            <?php } ?>
-                    <!-- section class blok1 end -->
-                    <!-- <section class="blok1">
-                        <div class="head-comment">
-                            <div>
-                                <div class="avatar"></div>
-                            </div>
-                            <div class="comment-content">
-                                <h4>Иванов Иван</h4>
-                                <p>Не следует, однако забывать, что новая модель организационной деятельности влечет за собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности
-                                    же сложившаяся струкрура организации в значительной степени обуславливает создание соответствующих условий активации Товарищи! укрепление и развитие структуры играет важную роль в формировании форм развития.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="blok1">
-                        <div class="head-comment">
-                            <div>
-                                <div class="avatar"></div>
-                            </div>
-                            <div class="comment-content">
-                                <h4>Иванов Иван</h4>
-                                <p>Не следует, однако забывать, что новая модель организационной деятельности влечет за собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности
-                                    же сложившаяся струкрура организации в значительной степени обуславливает создание соответствующих условий активации Товарищи! укрепление и развитие структуры играет важную роль в формировании форм развития.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="blok1">
-                        <div class="head-comment">
-                            <div>
-                                <div class="avatar"></div>
-                            </div>
-                            <div class="comment-content">
-                                <h4>Иванов Иван</h4>
-                                <p>Не следует, однако забывать, что новая модель организационной деятельности влечет за собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности
-                                    же сложившаяся струкрура организации в значительной степени обуславливает создание соответствующих условий активации Товарищи! укрепление и развитие структуры играет важную роль в формировании форм развития.</p>
-                            </div>
-                        </div>
-                    </section> -->
+                 
                     <div class="textarea">
                       
                        <?php
@@ -222,7 +214,7 @@
                           
                         </form>
                           <?php }else { ?>
-                            <h4><?php echo ' Комментарии могут оставлять только зарегистрированные пользователи!';
+                            <h4><?php echo 'Авторизируйтесь пожалуйста!';
                           ?></h4>
                           <?php } ?>
                           
