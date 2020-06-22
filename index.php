@@ -7,6 +7,28 @@
      if ($mysqli->connect_errno) {
          echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
      }
+     if(isset($_GET['delete_news'])){
+         if($_GET['delete_news']=='ok'){
+            if(isset($_GET['news_id'])){
+                $news_id = $_GET['news_id'];
+            // $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
+            // $is_admin = $admin->fetch_assoc();
+           
+            $mysqli->query("DELETE  FROM `comments` WHERE `news_id` = '".$news_id."'");
+            $mysqli->query("DELETE  FROM `news` WHERE `news_id` = '".$news_id."'");
+
+           
+            header('Location: /index.php');
+                
+               
+            }
+          
+         }
+      
+     }
+    
+      
+  
      if(isset($_GET['exit'])){
         if ($_GET['exit']=='ok'){
             unset($_COOKIE['auth']);
@@ -74,7 +96,7 @@
         <div class="link-search param-left">
                           <?php
                                 if(isset($_COOKIE['auth']) == 'true') {//Получаем куки и проверяем авторизован ли пользователь
-                                    $auth =  $_COOKIE['auth'];
+                                $auth =  $_COOKIE['auth'];
                                 $userid = $_COOKIE['userid'];
                                 $useremail = $_COOKIE['useremail'];
                                 $username = $_COOKIE['username'];
@@ -132,21 +154,17 @@
                         <div class=but>
                         
                         <?php
-                        $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
-                        $is_admin = $admin->fetch_assoc();
-                       
+                         $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
+                         $is_admin = $admin->fetch_assoc();
                         if($is_admin['is_admin']==1) {
-                            ?><a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but">Удалить </a>
+                            ?><a href="/index.php?delete_news=ok&news_id=<?php echo $res['news_id'] ?>" class="button inp-but">Удалить </a>
                        <?php }else{ ?>
                            <div style="width:50px;"></div>
                        <?php } ?>
                        <a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but inp-but-read" >Читать </a>
 
                         </div>
-                       
-
-                   
-                   
+                  
                 </div>
                 <?php } ?>
             </div>
@@ -191,7 +209,7 @@
                         $is_admin = $admin->fetch_assoc();
                        
                         if($is_admin['is_admin']==1) {
-                            ?><a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but">Удалить </a>
+                            ?><a href="/index.php?delete_news=ok&news_id=<?php echo $res['news_id'] ?>" class="button inp-but">Удалить </a>
                        <?php }else{ ?>
                            <div style="width:50px;"></div>
                        <?php } ?>

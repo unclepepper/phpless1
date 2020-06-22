@@ -109,17 +109,7 @@
                                     <input type="hidden" name='exit' value='ok'>
                                     <input type='submit' value='Выйти' class='exit'>
                                 </form>
-                                <?php  if($exit == 'ok' ){
-                                   
-                                //   unset($_COOKIE['auth']);
-                                //   SetCookie("auth", "", time()-3600); 
-                                //   unset($_COOKIE['username']);
-                                //   SetCookie("username", "", time()-3600); 
-                                //   unset($_COOKIE['useremail']);
-                                //   SetCookie("useremail", "", time()-3600); 
-                                //   unset($_COOKIE['userid']);
-                                //   SetCookie("userid", "", time()-3600); 
-                                         } ?>
+                              
                                 </div>
                                
                                <?php  }else {?>
@@ -171,7 +161,8 @@
                                     $name = $rus['name'];
                                     $surname = $rus['surname'];
 
-                                }else {echo 'no name';}
+                                }else {echo 'no name';
+                                }
                             }
                         
                             ?>
@@ -179,9 +170,7 @@
                     <?php
                         $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
                         $is_admin = $admin->fetch_assoc();
-                     
-
-                       
+              
                         if($is_admin['is_admin']==1) { ?>
                        
                     <a href="/page1.php?delete=ok&id=<?php echo $res['news_id'] ?>&comment_id=<?php echo $res['comment_id'] ?>" class="close-comment"><img src="image/close1.png" alt="close" width="20" title="delete"></a>
