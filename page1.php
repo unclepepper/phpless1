@@ -8,7 +8,20 @@
      $delete = $_GET['delete'];
      $comment_id = $_GET['comment_id'];
 
-  $exit = $_GET['exit'];
+     if(isset($_GET['exit'])){
+        if ($_GET['exit']=='ok'){
+            unset($_COOKIE['auth']);
+        SetCookie("auth", "", time()-3600); 
+        unset($_COOKIE['username']);
+        SetCookie("username", "", time()-3600); 
+        unset($_COOKIE['useremail']);
+        SetCookie("useremail", "", time()-3600); 
+        unset($_COOKIE['userid']);
+        SetCookie("userid", "", time()-3600); 
+        unset($_COOKIE['usersurname']);
+        SetCookie("usersurname", "", time()-3600); 
+        }
+     }
      $comment = $_GET['comment'];
      $news_id = $_GET['id'];
      $news_id = (int)$news_id;

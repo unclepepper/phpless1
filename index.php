@@ -8,7 +8,18 @@
          echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
      }
      if(isset($_GET['exit'])){
-        $exit = $_GET['exit'];
+        if ($_GET['exit']=='ok'){
+            unset($_COOKIE['auth']);
+        SetCookie("auth", "", time()-3600); 
+        unset($_COOKIE['username']);
+        SetCookie("username", "", time()-3600); 
+        unset($_COOKIE['useremail']);
+        SetCookie("useremail", "", time()-3600); 
+        unset($_COOKIE['userid']);
+        SetCookie("userid", "", time()-3600); 
+        unset($_COOKIE['usersurname']);
+        SetCookie("usersurname", "", time()-3600); 
+        }
      }
     
   
@@ -74,10 +85,7 @@
                                     <input type="hidden" name='exit' value='ok'>
                                 <input type='submit' value='Выйти' class='exit'>
                                 </form>
-                                <?php  if($exit == 'ok' ){
-                                   
-                                   include './logout.php';
-                                         } ?>
+                              
                                 </div>
                                
                                <?php  }else {?>
