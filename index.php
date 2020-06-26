@@ -71,7 +71,7 @@
                         <li><a href="page1.php">Статьи</a></li>
                         <li><a href="news.php">Новости</a></li>
                         <li><a href="">Обо мне</a></li>  
-                        <li><a href="authorization.php">вторизация</a></li>
+                        <li><a href="authorization.php">Авторизация</a></li>
                         <li><a href="authorization.php">Регистрация</a></li>
                               
                        
