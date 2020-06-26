@@ -1,3 +1,41 @@
+<?php 
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+function formastr($str) {
+    $str = trim($str);
+    $str = stripslashes($str);
+    $str = htmlspecialchars($str);
+    return $str;
+}
+   
+    $error_reg = ''; //Текст ошибки для регистрации
+    $success_reg = ''; 
+
+    $mysqli = new mysqli('localhost', 'root', '', 'blog');
+    if(isset($_GET['type'])){
+        if($_GET['type'] == 'reg') {
+       
+            $email = $_GET['email']; //Получаем почту
+            $login = $_GET['login']; //Получаем логин
+            $password = $_GET['password']; //Получаем пароль
+            $name = $_GET['name']; //Получаем имя
+            $surname = $_GET['surname']; //Получаем фамилию
+        if($email != '' and $password != '' ){
+           
+                $insert = $mysqli->query("INSERT INTO `users` (`user_id`, `email`, `password`, `name`,`surname`) VALUES (NULL, '".$email."', '".$password."', '".$name."', '".$surname."')");
+                $success_reg = 'Пользователь '. $email . ' зарегистрирован!' ;
+             
+        
+        }else {
+            $error_reg = 'Введите хоть что-нибудь!';
+        
+        }
+    }
+    }
+
+
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,18 +76,27 @@
     </div>
 
     <div class="wrap-news">
-
+    <?php if($success_reg != null){
+               echo ' <h3>'.$success_reg.'</h3>';
+           }else if($error_reg != null){
+            echo ' <h3>'.$error_reg.'</h3>';
+           }else{?>
         <h3>Новый пользователь</h3>
+           <?php } ?>
         <div class="wrap-news-user">
             <div class="input-news-user param-news">
-                <input type="text" placeholder="Имя" class="input-news-all">
-                <input type="text" placeholder="Отчество" class="input-news-all">
-                <input type="text" placeholder="Пароль" class="input-news-all">
+          
+            <form method="GET">
+               <input type="hidden"  name="type" value="reg">
+                <input type="text" placeholder="Имя" name="name" class="input-news-all">
+                <input type="login" placeholder="Логин" name="login" class="input-news-all">
+                <input type="password" placeholder="Пароль" name="password" class="input-news-all">
             </div>
             <div class="input-news-user param-news">
-                <input type="text" placeholder="Фамилия" class="input-news-all">
-                <input type="text" placeholder="Почта" class="input-news-all">
-                <button type="submit" class="button">Добавить</button>
+                <input type="text" placeholder="Фамилия" name="surname" class="input-news-all">
+                <input type="email" placeholder="Почта" name="email" class="input-news-all">
+                <input type="submit" class="button button-news" value="Добавить">
+                </form>
             </div>
         </div>
 

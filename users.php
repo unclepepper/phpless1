@@ -3,9 +3,18 @@
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 $mysqli = new mysqli('localhost', 'root', '', 'blog');
-// $count = $mysqli->query("SELECT  COUNT (*) FROM `users` ");
- $result = $mysqli->query("SELECT  * FROM `users` ORDER BY `name`");
-// $row = $result->fetch_assoc(); 
+
+$result = $mysqli->query("SELECT  * FROM `users`");
+$success_reg = ''; 
+// $result = $mysqli->query("SELECT * FROM news  ORDER BY news_id DESC LIMIT 2,2 "); 
+if(isset($_GET['delete'])){
+    if($_GET['delete']=='yes'){
+        $user_id=$_GET['user'];
+        $mysqli->query("DELETE  FROM `users` WHERE `user_id` = '".$user_id."'");
+        $success_del = 'Пользователь удален!'; 
+        header('location:users.php');
+    }
+}
 
 
 
@@ -56,11 +65,15 @@ for($i=0;$i<=$count; $i++){
     </div>
 
     <div class="wrap-news">
+       <?php if( $success_del != null ){
+            echo '<h3>'.$success_del.'</h3>'; 
+        }else{?>
         <h3>Пользователи сайта</h3>
+        <?php } ?>
         <table align="center" border="2" width="90%" >
         <tr><td>Фамилия</td><td>Имя</td><td>email</td><td>Логин</td><td>тел 1</td></tr>
        <?php foreach($result as $res){ ?> 
-               <tr><td> <?php echo $res['surname']; ?></td><td><?php echo $res['name']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['mobile']; ?></td></tr>
+               <tr><td><a href='users.php?delete=yes&user=<?php echo $res['user_id']; ?>' class='delete'>Delete</a>' <?php echo $res['surname']; ?></td><td><?php echo $res['name']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['mobile']; ?></td></tr>
         
             <?php } ?>
         </table>
