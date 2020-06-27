@@ -1,7 +1,8 @@
 <?php 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+// ini_set('error_reporting', E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+
 function formastr($str) {
     $str = trim($str);
     $str = stripslashes($str);
@@ -13,6 +14,14 @@ function formastr($str) {
     $success_reg = ''; 
 
     $mysqli = new mysqli('localhost', 'root', '', 'blog');
+    if(isset($_COOKIE['auth']) == 'true') {//Получаем куки и проверяем авторизован ли пользователь
+        $auth =  $_COOKIE['auth'];
+        $userid = $_COOKIE['userid'];
+        $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
+        $is_admin = $admin->fetch_assoc();
+    }
+   
+
     if(isset($_GET['type'])){
         if($_GET['type'] == 'reg') {
        
@@ -95,7 +104,9 @@ function formastr($str) {
             <div class="input-news-user param-news">
                 <input type="text" placeholder="Фамилия" name="surname" class="input-news-all">
                 <input type="email" placeholder="Почта" name="email" class="input-news-all">
+                <?php if($is_admin['is_admin']==1) {?>
                 <input type="submit" class="button button-news" value="Добавить">
+                <?php }?>
                 </form>
             </div>
         </div>

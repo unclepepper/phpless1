@@ -54,7 +54,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'blog'); // Создаем под�
                     <div class="close"><img src="image/close.png" alt="close">
                     </div>
                     <ul>
-                        <li><a href="new_user.php">Пользователи</a></li>
+                        
                         <li><a href="news.php">Новости</a></li>
                         <li><a href="#">Настройка сайта</a></li>
                         <li><a href="index.php">Главная</a></li>
@@ -64,7 +64,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'blog'); // Создаем под�
             <!-- hidden-menu-wrap end... -->
         </div>
         <div class="nav param-left">
-            <a href="new_user.php">Пользователи</a>
+            <a href="index.php">Главная</a>
             <a href="news.php">Новости</a>
             <a href="#">Настройка сайта</a>
             <!-- <a href="#">Обо мне</a> -->

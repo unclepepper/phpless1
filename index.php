@@ -102,6 +102,12 @@
                                 $username = $_COOKIE['username'];
                                 $usersurname = $_COOKIE['usersurname'];?>
                                 <div class='user'>
+                                <?php
+                                 $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
+                                 $is_admin = $admin->fetch_assoc();
+                                    if($is_admin['is_admin']==1) {?>
+                                    <a href="new_user.php" style="margin-right:15px;">New user</a>
+                                <?php } ?>
                                 <h5><?php echo $username . ' ' .  $usersurname ?></h5>
                                 <form method="$_GET">
                                     <input type="hidden" name='exit' value='ok'>
@@ -110,7 +116,8 @@
                               
                                 </div>
                                
-                               <?php  }else {?>
+                               <?php  }else { ?>
+                                
             <a href="authorization.php">Авторизация</a>
             <a href="authorization.php">Регистрация</a>
             <?php  } ?>

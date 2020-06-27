@@ -4,9 +4,20 @@
 // ini_set('display_startup_errors', 1);
 $mysqli = new mysqli('localhost', 'root', '', 'blog');
 
+if(isset($_COOKIE['auth']) == 'true') {//Получаем куки и проверяем авторизован ли пользователь
+    $auth =  $_COOKIE['auth'];
+    $userid = $_COOKIE['userid'];
+    $useremail = $_COOKIE['useremail'];
+    $username = $_COOKIE['username'];
+    $usersurname = $_COOKIE['usersurname'];
+}
+$admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
+$is_admin = $admin->fetch_assoc();
+
 $result = $mysqli->query("SELECT  * FROM `users`");
 $success_reg = ''; 
 // $result = $mysqli->query("SELECT * FROM news  ORDER BY news_id DESC LIMIT 2,2 "); 
+if($is_admin['is_admin']==1) { 
 if(isset($_GET['delete'])){
     if($_GET['delete']=='yes'){
         $user_id=$_GET['user'];
@@ -16,11 +27,6 @@ if(isset($_GET['delete'])){
     }
 }
 
-
-
-
-for($i=0;$i<=$count; $i++){
-    // echo $i;
 }
 
 ?>
@@ -73,7 +79,11 @@ for($i=0;$i<=$count; $i++){
         <table align="center" border="2" width="90%" >
         <tr><td>Фамилия</td><td>Имя</td><td>email</td><td>Логин</td><td>тел 1</td></tr>
        <?php foreach($result as $res){ ?> 
-               <tr><td><a href='users.php?delete=yes&user=<?php echo $res['user_id']; ?>' class='delete'>Delete</a>' <?php echo $res['surname']; ?></td><td><?php echo $res['name']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['mobile']; ?></td></tr>
+               <tr><td>
+               <?php if($is_admin['is_admin']==1) {?>
+               <a href='users.php?delete=yes&user=<?php echo $res['user_id']; ?>' class='delete' title="удалить пользователя  <?php echo $res['email']; ?> ?"><img src='image/close1.png' width='20'></a>
+               <?php }?>
+                <?php echo $res['surname']; ?></td><td><?php echo $res['name']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['mobile']; ?></td></tr>
         
             <?php } ?>
         </table>
