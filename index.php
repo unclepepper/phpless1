@@ -27,8 +27,6 @@
       
      }
     
-      
-  
      if(isset($_GET['exit'])){
         if ($_GET['exit']=='ok'){
             unset($_COOKIE['auth']);
@@ -237,12 +235,12 @@
                 <h3 class="content-top-right-alig">Разделы</h3>
                 <span class="content-top-right-alig">Статьи</span>
                 <ul>
-                    <li><a href="page1.php">Статья 1</a></li>
-                    <li><a href="page1.php">Статья 2</a></li>
-                    <li><a href="page1.php">Статья 3</a></li>
-                    <li><a href="page1.php">Статья 4</a></li>
-                    <li><a href="page1.php">Статья 5</a></li>
-                    <li><a href="page1.php">Статья 5.1</a></li>
+                <?php
+                         $category = $mysqli->query("SELECT * FROM `category`");
+                         foreach($category as $cat){  ?>
+                            <li><a href="page1.php?catid=<?php echo $cat['id_category']; ?>"><?php echo  $cat['title']; ?></a></li>
+                            <?php    } ?>
+
                 </ul>
                 <span class="content-top-right-alig">Новости</span>
                 <ul>
