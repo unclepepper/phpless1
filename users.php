@@ -77,13 +77,14 @@ if(isset($_GET['delete'])){
         <h3>Пользователи сайта</h3>
         <?php } ?>
         <table align="center" border="2" width="90%" >
-        <tr><td>Фамилия</td><td>Имя</td><td>email</td><td>Логин</td><td>тел 1</td></tr>
+        <tr><td>Фамилия</td><td>Имя</td><td>email</td><td>Логин</td><td>Статус</td></tr>
        <?php foreach($result as $res){ ?> 
                <tr><td>
                <?php if($is_admin['is_admin']==1) {?>
                <a href='users.php?delete=yes&user=<?php echo $res['user_id']; ?>' class='delete' title="удалить пользователя  <?php echo $res['email']; ?> ?"><img src='image/close1.png' width='20'></a>
                <?php }?>
-                <?php echo $res['surname']; ?></td><td><?php echo $res['name']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['mobile']; ?></td></tr>
+                <?php echo $res['surname']; ?></td><td><?php echo $res['name']; ?></td><td><?php echo $res['email']; ?></td><td><?php echo $res['email']; ?></td><td>
+                <?php if($res['is_admin']==1){echo 'admin';}else{echo 'пользователь';} ?></td></tr>
         
             <?php } ?>
         </table>
