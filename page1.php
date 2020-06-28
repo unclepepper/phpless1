@@ -7,7 +7,7 @@
      }
      $delete = $_GET['delete'];
      $comment_id = $_GET['comment_id'];
-
+     $catid = $_GET['catid'];
      if(isset($_GET['exit'])){
         if ($_GET['exit']=='ok'){
             unset($_COOKIE['auth']);
@@ -24,9 +24,16 @@
      }
      $comment = $_GET['comment'];
      $news_id = $_GET['id'];
-     $news_id = (int)$news_id;
-     $result = $mysqli->query("SELECT * FROM `news` WHERE `news_id` = '".$news_id."'"); 
-     $row = $result->fetch_assoc(); //Извлекаем массив с данными 
+     if(isset($catid)){
+        $result = $mysqli->query("SELECT * FROM `news` WHERE `catid` = '".$catid."'");
+     }else{
+        $news_id = (int)$news_id;
+        $result = $mysqli->query("SELECT * FROM `news` WHERE `news_id` = '".$news_id."'");
+        
+     }
+     
+
+    //  $row = $result->fetch_assoc(); //Извлекаем массив с данными 
      
 
      $success_com = '';
@@ -124,6 +131,7 @@
             
                 <div class="head">
                 <?php 
+                foreach($result as $row){
                     setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
                     //$time = strtotime($res['created']);
                     $newstime = strftime("%d %B %y",$row['created']);
@@ -222,7 +230,9 @@
                           
                     
                     </div>
+                    <?php } ?>
                 </div>
+               
             </div>
             <!-- content-top end... -->
 
@@ -233,12 +243,11 @@
                 <h3 class="content-top-right-alig">Разделы</h3>
                 <span class="content-top-right-alig">Статьи</span>
                 <ul>
-                    <li><a href="page1.php">Статья 1</a></li>
-                    <li><a href="page1.php">Статья 2</a></li>
-                    <li><a href="page1.php">Статья 3</a></li>
-                    <li><a href="page1.php">Статья 4</a></li>
-                    <li><a href="page1.php">Статья 5</a></li>
-                    <li><a href="page1.php">Статья 5.1</a></li>
+                <?php
+                         $category = $mysqli->query("SELECT * FROM `category`");
+                         foreach($category as $cat){  ?>
+                            <li><a href="page1.php?catid=<?php echo $cat['id_category']; ?>"><?php echo  $cat['title']; ?></a></li>
+                            <?php    } ?>
                 </ul>
                 <span class="content-top-right-alig">Новости</span>
                 <ul>
