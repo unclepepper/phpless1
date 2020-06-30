@@ -36,9 +36,10 @@
     // search
     if(isset($_GET['search'])){
         $search = $_GET['search'];
-        header('Location: /search.php?search='.$search);  
+        $result = $mysqli->query("SELECT * FROM `news` WHERE `desc_small` LIKE '%".$search."%' OR `title` LIKE '%".$search."%' OR `desc_large` LIKE '%".$search."%'  ");
+     
     }
-  
+   
      
 ?>
 <!DOCTYPE html>
@@ -55,16 +56,16 @@
 
 <body>
     <div class="top ">
-        <div class="logo param"><span> Блог Пользователя</span></div>
+        <div class="logo param"><a href="index.php"> Блог Пользователя</a></div>
         <div class="device-menu param-left">
             <div class="hidden-menu-wrap">
                 <div class="hidden-menu">
                     <div class="close"><img src="image/close.png" alt="close">
                     </div>
                     <ul>
-                        <li><a href="page1.php">Статьи</a></li>
+                        <li>  <a href="index.php">Главная</a></li>
                         <li><a href="news.php">Новости</a></li>
-                        <li><a href="">Обо мне</a></li>  
+                        <li> <a href="page1.php">Статьи</a></li>  
                         <li><a href="authorization.php">Авторизация</a></li>
                         <li><a href="authorization.php">Регистрация</a></li>
                               
@@ -75,7 +76,7 @@
             <!-- hidden-menu-wrap end... -->
         </div>
         <div class="nav param-left">
-            <a href="#">Главная</a>
+            <a href="index.php">Главная</a>
             <a href="page1.php">Статьи</a>
             <a href="news.php">Новости</a>
             <a href="#">Обо мне</a>
@@ -125,7 +126,7 @@
        
             <div class="content-top-left">
             <?php
-          $result = $mysqli->query("SELECT  * FROM `news` ORDER BY `news_id` DESC  LIMIT 0,2"); 
+         
                     foreach($result as $res){ 
                         
                     ?>
@@ -166,65 +167,14 @@
                            <div style="width:50px;"></div>
                        <?php } ?>
                        <a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but inp-but-read" >Читать </a>
-
                         </div>
-                  
                 </div>
                 <?php } ?>
             </div>
             
-           
             <!-- content top -->
-            <div class="image"></div>
-            <div class="content-bottom">
-           
-            <?php
-          $result = $mysqli->query("SELECT * FROM news  ORDER BY news_id DESC LIMIT 2,2 "); 
-                          
-                    foreach($result as $res){ 
-                        
-                    ?>
-                <div class="head">  
-                <h3><?php echo $res['title']; ?></h3>
-                    <?php 
-                    setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
-                                $time = strtotime($res['created']);
-                                $newstime = strftime("%d %B %y",$res['created']);
-                                $time = iconv('windows-1251', 'utf-8', $newstime);
-                                ?>
-                   <span><?php echo $time; ?></span>
-                </div>
 
-                <p>
-                <?php 
-              
-                    echo $res['desc_small']; 
-               ?>
-                </p>
-                <div class="content-foot">
-                    <div class="content-foot-left">
-                        <span>Просмотры: 300</span>
-                        <span>Лайки: 100</span>
-                    </div>
-                    <div class=but>
-                       
-                    <?php
-                        $admin = $mysqli->query("SELECT * FROM `users` WHERE `user_id` = '".$userid."'");
-                        $is_admin = $admin->fetch_assoc();
-                       
-                        if($is_admin['is_admin']==1) {
-                            ?><a href="/index.php?delete_news=ok&news_id=<?php echo $res['news_id'] ?>" class="button inp-but">Удалить </a>
-                       <?php }else{ ?>
-                           <div style="width:50px;"></div>
-                       <?php } ?>
-                       <a href="/page1.php?id=<?php echo $res['news_id'] ?>" class="button inp-but inp-but-read" >Читать </a>
-                        </div>
-                      
-                    
-                       
-                </div>
-                <?php } ?> 
-            </div> 
+           
            
         </div>
         <!-- main end -->

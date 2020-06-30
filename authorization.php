@@ -83,7 +83,10 @@
         $error_reg = '';
         $success_reg = ''; 
     }
-    
+    if(isset($_GET['search'])){
+        $search = $_GET['search'];
+        header('Location: /search.php?search='.$search);  
+    }
 ?>
 
     <!DOCTYPE html>
@@ -127,8 +130,11 @@
         </div>
         <div class="search">
             <div class="window-search param">
-                <input type="text" size="40" placeholder="Введите текст...">
-                <button type="submit" class="button">Искать</button>
+            <form method="GET" class="form-search">
+        <input type="text" size="40" placeholder="Введите текст..." name="search">
+            <input type="submit" class="button" value="Искать" style="color:#fff;">
+        </form>
+        </div>
             </div>
             <div class="link-search-authorization param-left">
                 <a href="#">Авторизация и Регистрация</a>

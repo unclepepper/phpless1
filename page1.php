@@ -26,6 +26,7 @@
      $news_id = $_GET['id'];
      if(isset($catid)){
         $result = $mysqli->query("SELECT * FROM `news` WHERE `catid` = '".$catid."'");
+       
      }else{
         $news_id = (int)$news_id;
         $result = $mysqli->query("SELECT * FROM `news` WHERE `news_id` = '".$news_id."'");
@@ -55,8 +56,13 @@
      }
    if($delete='ok'){
         $mysqli->query("DELETE  FROM `comments` WHERE `comment_id` = '".$comment_id."'");
-  
-      }                 
+        
+      }   
+      
+      if(isset($_GET['search'])){
+        $search = $_GET['search'];
+        header('Location: /search.php?search='.$search);  
+    }              
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -99,8 +105,10 @@
     </div>
     <div class="search">
         <div class="window-search param">
-            <input type="text" size="40" placeholder="Введите текст...">
-            <button type="submit" class="button">Искать</button>
+        <form method="GET" class="form-search">
+            <input type="text" size="40" placeholder="Введите текст..." name="search">
+            <input type="submit" class="button" value="Искать" style="color:#fff;">
+        </form>
         </div>
         <div class="link-search param-left">
         <?php
